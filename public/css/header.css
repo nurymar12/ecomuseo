@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    position: fixed; /* Fija el encabezado en la parte superior de la página */
+    top: 0; /* Alinea el encabezado con el borde superior de la ventana del navegador */
+    left: 0; /* Alinea el encabezado con el borde izquierdo de la ventana del navegador */
+    width: 100%; /* Asegura que el encabezado se extienda a lo ancho de la ventana del navegador */
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.header nav {
+    margin-right: 20px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+.header .language {
+    border: none;
+    background: none;
+    color: white;
+    margin-right: 10px;
+}
+
+.header .auth-buttons a {
+    padding: 5px 15px;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    margin-left: 5px;
+}
+
+.header .auth-buttons a:hover {
+    background-color: white;
+    color: #4CAF50;
+}
+
+/* Estilos para el contenedor de botones de autenticación */
+#auth-buttons {
+    padding: 6px;
+    text-align: right;
+    z-index: 10;
+}
+
+/* Estilos comunes para todos los enlaces de autenticación */
+#auth-links a {
+    font-weight: bold;
+    color: #4A5568; /* Gris oscuro */
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+/* Estilos para los estados de hover y focus de los enlaces */
+#auth-links a:hover, #auth-links a:focus {
+    color: #FFFFFF; /* Blanco */
+    background-color: #2F855A; /* Verde oscuro */
+    outline: none;
+}
+
+/* Estilos específicos para el enlace del dashboard */
+#link-dashboard {
+    background-color: #48BB78; /* Verde */
+}
+
+/* Estilos específicos para el enlace de Google */
+#link-google {
+    background-color: #EA4335; /* Rojo de Google */
+}
+
+/* Estilos específicos para el enlace de login */
+#link-login {
+    background-color: #63B3ED; /* Azul claro */
+}
+
+/* Estilos específicos para el enlace de registro */
+#link-register {
+    background-color: #9F7AEA; /* Púrpura */
+    margin-left: 4px; /* Espacio extra al lado izquierdo */
+}
