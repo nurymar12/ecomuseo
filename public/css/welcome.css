@@ -1,0 +1,65 @@
+/* CAROUSEL */
+
+.carousel{
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background: url(../images/Photo_Ecomuseo.png);
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* ACTIVIDADES */
+.actividades {
+  background-color: rgb(255, 255, 255);
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(../fonts/Inter/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+.actividades h1 {
+  color: #000;
+  text-align: center;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #000;
+  font-family: Inter;
+  font-size: 70px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 72px; /* 102.857% */
+  letter-spacing: -1.05px;
+}
+
+.actividades .box-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background-color: #AAE983;
+}
+
+.actividades .box-container .box{
+  display: flex;
+  border-radius: .5rem;
+  position: relative;
+}
+
+.actividades .box-container .box .actividad img {
+  width: 300px;
+  height: 372px;
+}
+
+
+/* Imagen Abajo */
+
+.imagen-abajo{
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background: url(../images/Photo_Agro.jpg);
+  background-size: cover;
+  background-position: center;
+}
