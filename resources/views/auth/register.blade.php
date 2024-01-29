@@ -19,7 +19,7 @@
                 <img src="{{ asset('images_2/logo_vectorizado.svg') }}" alt="Logo" class="logo-svg">
 
                 {{-- <h2>Bienvenido a ECOMUSEO</h2> --}}
-                <h3>Registrarse</h3>
+                <h3>REGISTRARSE</h3>
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -66,8 +66,7 @@
                             {{ __('Register') }}
                         </x-primary-button>
 
-                        <a class="already-registered"
-                            href="{{ route('login') }}">
+                        <a class="already-registered" href="{{ route('login') }}">
                             {{ __('¿Ya está registrado?') }}
                         </a>
                     </div>
@@ -79,6 +78,7 @@
                 Registrarse
             </div>
         </div>
+    </div>
 </body>
 
 </html>
