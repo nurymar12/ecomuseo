@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #5B713E;
+}
+
+.container {
+    display: flex;
+    /* height: 100vh; */
+    padding: 10%;
+}
+
+.left-side {
+    /* background: url('tu-imagen-de-fondo.jpg') no-repeat center center; */
+    background-color: #fff;
+    background-size: cover;
+    width: 50%;
+    padding: 5%;
+}
+
+.right-side {
+    width: 50%;
+    background-color: black;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.register-form {
+    max-width: 300px;
+    margin: auto;
+}
+
+/* Estilo para las etiquetas */
+.register-form label {
+    display: block;
+    margin-bottom: .5rem;
+    color: #333;
+    font-weight: bold;
+    padding: 3px 0;
+}
+
+/* Estilo para los inputs */
+.register-form input {
+    border: none;
+    border-bottom: 3px solid green;
+    padding: 5px 0;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.register-form input:focus {
+    border: none;
+    border-bottom: 3px solid green;
+}
+.register-form .register-section {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.register-form a {
+    justify-content: center;
+    display: flex;
+    padding: 3px;
+}
+.register-form .ms-4 {
+    justify-content: center;
+    display: flex;
+    width: 80%;
+    margin: 5px;
+    padding: 10px;
+    background-color: #008f68;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.register-form button:hover {
+    background-color: #007f5f;
+}
