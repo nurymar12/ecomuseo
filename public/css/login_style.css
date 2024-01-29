@@ -55,7 +55,7 @@ body {
 /* Estilo para las etiquetas */
 .login-form label {
     display: block;
-    margin-bottom: .5rem;
+    margin-top: .5rem;
     color: #333;
     font-weight: bold;
     padding: 3px 0;
