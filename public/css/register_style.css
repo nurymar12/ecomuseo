@@ -7,7 +7,7 @@ body {
 .container {
     display: flex;
     /* height: 100vh; */
-    padding: 10%;
+    padding: 5%;
 }
 
 .left-side {
@@ -19,13 +19,34 @@ body {
 }
 
 .right-side {
+    position: relative;
     width: 50%;
-    background-color: black;
+    background-color: skyblue;
     padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+.right-side .top-right-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: #315530;
+    padding: 20px;
+    /* Puedes añadir más estilos aquí si es necesario */
+}
+
+
+/* Estilo para la imagen SVG */
+.logo-svg {
+    display: block; /* Hace que la imagen se pueda centrar */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    width: 120px; /* Ajusta el ancho según el tamaño deseado */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 20px; /* Espacio entre la imagen y el título */
+}
+
 
 .register-form {
     max-width: 300px;

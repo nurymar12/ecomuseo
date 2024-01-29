@@ -2,12 +2,13 @@
 <html lang="es">
 
 <link rel="stylesheet" href="{{ asset('css/register_style.css') }}">
+<link rel="icon" type="image/svg+xml" href="{{ asset('images_2/logo_vectorizado.svg') }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Registrar ususario - Ecomuseo LLAQTA AMARU -YOYEN KUWA</title>
+    <title>Registrarse - Ecomuseo LLAQTA AMARU -YOYEN KUWA</title>
 
 </head>
 
@@ -15,6 +16,8 @@
     <div class="container">
         <div class="left-side">
             <div class="register-form">
+                <img src="{{ asset('images_2/logo_vectorizado.svg') }}" alt="Logo" class="logo-svg">
+
                 {{-- <h2>Bienvenido a ECOMUSEO</h2> --}}
                 <h3>Registrarse</h3>
 
@@ -72,7 +75,9 @@
             </div>
         </div>
         <div class="right-side">
-            <!-- Aquí puedes añadir más elementos de diseño -->
+            <div class="top-right-div">
+                Registrarse
+            </div>
         </div>
 </body>
 
