@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #5B713E;
+}
+
+.container {
+    display: flex;
+    /* height: 100vh; */
+    padding: 5%;
+}
+
+.left-side {
+    /* background: url('tu-imagen-de-fondo.jpg') no-repeat center center; */
+    background-color: #fff;
+    background-size: cover;
+    width: 50%;
+    padding: 5%;
+}
+
+.right-side {
+    position: relative;
+    width: 50%;
+    background-color: skyblue;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.right-side .top-right-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: #315530;
+    padding: 20px;
+    /* Puedes añadir más estilos aquí si es necesario */
+}
+
+
+/* Estilo para la imagen SVG */
+.logo-svg {
+    display: block; /* Hace que la imagen se pueda centrar */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    width: 120px; /* Ajusta el ancho según el tamaño deseado */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-bottom: 20px; /* Espacio entre la imagen y el título */
+}
+
+
+.register-form {
+    max-width: 300px;
+    margin: auto;
+}
+
+/* Estilo para las etiquetas */
+.register-form label {
+    display: block;
+    margin-top: .5rem;
+    color: #333;
+    font-weight: bold;
+    padding: 3px 0;
+}
+
+/* Estilo para los inputs */
+.register-form input {
+    border: none;
+    border-bottom: 3px solid green;
+    padding: 5px 0;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.register-form input:focus {
+    border: none;
+    border-bottom: 3px solid green;
+}
+.register-form .register-section {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+}
+
+.register-form a {
+    justify-content: center;
+    display: flex;
+    padding: 3px;
+}
+.register-form .ms-4 {
+    justify-content: center;
+    display: flex;
+    width: 80%;
+    margin: 5px;
+    padding: 10px;
+    background-color: #008f68;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.register-form button:hover {
+    background-color: #007f5f;
+}
