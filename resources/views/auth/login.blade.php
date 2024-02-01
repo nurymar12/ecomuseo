@@ -2,7 +2,7 @@
 <html lang="es">
 
 <link rel="stylesheet" href="{{ asset('css/login_style.css') }}">
-<link rel="icon" type="image/svg+xml" href="{{ asset('images_2/logo_vectorizado.svg') }}">
+<link rel="icon" type="image/svg+xml" href="{{ asset('images/logo_vectorizado.svg') }}">
 
 <head>
     <meta charset="UTF-8">
@@ -19,7 +19,7 @@
         </div>
         <div class="right-side">
             <div class="login-form">
-                <img src="{{ asset('images_2/logo_vectorizado.svg') }}" alt="Logo" class="logo-svg">
+                <img src="{{ asset('images/logo_vectorizado.svg') }}" alt="Logo" class="logo-svg">
 
                 {{-- <h2>Bienvenido a ECOMUSEO</h2> --}}
                 <h3>INICIAR SESIÓN</h3>

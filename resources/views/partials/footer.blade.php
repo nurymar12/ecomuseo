@@ -36,17 +36,17 @@
             </div><div class="footer-links">
                 <h4>Siguenos</h4>
                 <div class="social-link">
-                    <a href="#"> 
-                        <img src="{{ asset('images/icon_Facebook.svg') }}" alt="Icono de Facebook">
+                    <a href="#">
+                        <img src="{{ asset('images/welcome/icon_Facebook.svg') }}" alt="Icono de Facebook">
                     </a>
-                    <a href="#"> 
-                        <img src="{{ asset('images/icon_Instagram.svg') }}" alt="Icono de Instagram">
+                    <a href="#">
+                        <img src="{{ asset('images/welcome/icon_Instagram.svg') }}" alt="Icono de Instagram">
                     </a>
-                    <a href="#"> 
-                        <img src="{{ asset('images/icon_TikTok.svg') }}" alt="Icono de TikTok">
+                    <a href="#">
+                        <img src="{{ asset('images/welcome/icon_TikTok.svg') }}" alt="Icono de TikTok">
                     </a>
-                    <a href="#"> 
-                        <img src="{{ asset('images/icon_Twitter.svg') }}" alt="Icono de Twitter">
+                    <a href="#">
+                        <img src="{{ asset('images/welcome/icon_Twitter.svg') }}" alt="Icono de Twitter">
                     </a>
                 </div>
             </div>

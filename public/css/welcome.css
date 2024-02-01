@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   min-height: 100vh;
-  background: url(../images/Photo_Ecomuseo.png);
+  background: url(../images/welcome/Photo_Ecomuseo.png);
   background-size: cover;
   background-position: center;
 }
@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   min-height: 100vh;
-  background: url(../images/Photo_Agro.jpg);
+  background: url(../images/welcome/Photo_Agro.jpg);
   background-size: cover;
   background-position: center;
 }
