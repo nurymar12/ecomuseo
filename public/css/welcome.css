@@ -50,6 +50,7 @@
 .actividades .box-container .box .actividad img {
   width: 300px;
   height: 372px;
+  z-index: 1;
 }
 
 

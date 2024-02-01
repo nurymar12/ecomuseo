@@ -10,11 +10,13 @@
 
     </head>
 
-    <header>
-        @include('partials.header')
-    </header>
+    
     
     <body>
+
+        <header>
+            @include('partials.header')
+        </header>
         <!-- Carousel de Imagenes-->
         <section class="carousel" id="carousel">
         </section>
@@ -62,10 +64,12 @@
         <section class="imagen-abajo">
 
         </section>
+
+        <footer>
+            @include('partials.footer')
+        </footer>
     </body>
 
-    <footer>
-        @include('partials.footer')
-    </footer>
+    
     
 </html>
