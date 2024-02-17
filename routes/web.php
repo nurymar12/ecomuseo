@@ -35,6 +35,11 @@ Route::get('/google-auth/redirect', function () {
         'name' => $user_google->name,
         'email' => $user_google->email,
     ]);
+    if (User::count() == 1) {
+        $user->assignRole('Admin');
+    }else {
+        $user->assignRole('Visitor');
+    }
     Auth::login($user);
 
     return redirect('/dashboard');
