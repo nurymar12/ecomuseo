@@ -46,7 +46,9 @@ body {
     height: auto; /* Mantiene la proporción de la imagen */
     margin-bottom: 20px; /* Espacio entre la imagen y el título */
 }
-
+.google_logo_svg {
+    width: 50px;
+}
 
 .register-form {
     max-width: 300px;

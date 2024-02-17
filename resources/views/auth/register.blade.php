@@ -71,6 +71,9 @@
                             {{ __('¿Ya está registrado?') }}
                         </a>
                     </div>
+                    <a href="/google-auth/redirect" id="link-google">
+                        <img src="{{ asset('images/google_logo_2.svg') }}" alt="Iniciar sesión por google" class="google_logo_svg">
+                    </a>
                 </form>
             </div>
         </div>

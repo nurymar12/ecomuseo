@@ -47,6 +47,10 @@ body {
     margin-bottom: 20px; /* Espacio entre la imagen y el título */
 }
 
+.google_logo_svg {
+    width: 50px;
+}
+
 .login-form {
     max-width: 300px;
     margin: auto;
