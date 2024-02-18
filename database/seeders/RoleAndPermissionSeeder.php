@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\User;
 
 class RoleAndPermissionSeeder extends Seeder
 {
@@ -47,10 +48,19 @@ class RoleAndPermissionSeeder extends Seeder
             'delete-blog-posts',
         ]);
 
-        // $user = User::first();
+        $user = User::first();
 
-        // $user->assignRole('Admin');
+        $user->assignRole('Admin');
 
+        $users = User::all();
+        if ($users->isNotEmpty()) {
+            $users->first()->assignRole($adminRole); // Asigna el rol de Admin al primer usuario
+
+            // Asigna el rol de Visitor a todos los demás usuarios
+            $users->slice(1)->each(function ($user) use ($userRole) {
+                $user->assignRole($userRole);
+            });
+        }
 
     }
 }
