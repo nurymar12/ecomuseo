@@ -20,17 +20,17 @@
                 </div>
                 <div class="user-actions" id="auth-buttons">
                     @if (Route::has('login'))
-                        <div class="auth-links" id="auth-links">
+                        {{-- <div class="auth-links" id="auth-links"> --}}
                             @auth
 
                                 {{-- <a href="{{ url('/dashboard') }}" id="link-dashboard">Dashboard</a> --}}
 
-                                <a href="{{ route('profile.edit') }}" class="profile-action-link">Perfil</a>
-                                <form method="POST" action="{{ route('logout') }}" class="profile-action-form">
+                                <a href="{{ route('profile.edit') }}" class="profile-btn">Perfil</a>
+                                <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <a href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="profile-action-link">
+                                                this.closest('form').submit();" class="logout-btn">
                                     Cerrar sesión
                                     </a>
                                 </form>
@@ -40,7 +40,7 @@
                                     <a href="{{ route('register') }}" class="register-btn">Registrarse</a>
                                 @endif
                             @endauth
-                        </div>
+                        {{-- </div> --}}
                     @endif
                 </div>
             </nav>
