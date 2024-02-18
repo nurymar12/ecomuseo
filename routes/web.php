@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+// Importa el middleware Role de Spatie
+use Spatie\Permission\Middleware\RoleMiddleware;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,13 +43,23 @@ Route::get('/google-auth/redirect', function () {
     }
     Auth::login($user);
 
-    return redirect('/dashboard');
+    if($user->hasRole("Admin")){
+        return redirect('/dashboard');
+    } else {
+        return view('welcome');
+    }
+
     // $user->token
 });
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'redirect.if.not.admin.or.volunteer'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

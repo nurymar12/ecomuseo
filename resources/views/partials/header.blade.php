@@ -26,11 +26,22 @@
             <button>ES</button>
         </div>
 
-        <div class="auth-buttons" id="auth-buttons">
+        <div class="profile-actions" id="auth-buttons">
             @if (Route::has('login'))
                 <div class="auth-links" id="auth-links">
                     @auth
-                        <a href="{{ url('/dashboard') }}" id="link-dashboard">Dashboard</a>
+
+                        {{-- <a href="{{ url('/dashboard') }}" id="link-dashboard">Dashboard</a> --}}
+
+                        <a href="{{ route('profile.edit') }}" class="profile-action-link">Perfil</a>
+                        <form method="POST" action="{{ route('logout') }}" class="profile-action-form">
+                            @csrf
+                            <a href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();" class="profile-action-link">
+                            Cerrar sesión
+                            </a>
+                        </form>
                     @else
                         <a href="{{ route('login') }}" id="link-login">Log in</a>
                         @if (Route::has('register'))

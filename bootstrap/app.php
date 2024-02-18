@@ -25,6 +25,16 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
+$app->middlewarePriority = [
+    // \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,
+    // \Illuminate\Cookie\Middleware\EncryptCookies::class,
+    // \Illuminate\Session\Middleware\StartSession::class,
+    // ... otros middlewares predeterminados de Laravel
+    \Spatie\Permission\Middleware\RoleMiddleware::class,
+    \Spatie\Permission\Middleware\PermissionMiddleware::class,
+    \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+    // ... restantes middlewares de Laravel
+];
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,

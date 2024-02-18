@@ -103,3 +103,29 @@ body {
     background-color: #9F7AEA; /* Púrpura */
     margin-left: 4px; /* Espacio extra al lado izquierdo */
 }
+
+.profile-actions {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos al final del contenedor (a la derecha) */
+    align-items: center; /* Centra los elementos verticalmente */
+    gap: 10px; /* Espacio entre los elementos */
+}
+
+.profile-action-link {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.profile-action-form {
+    display: inline; /* Asegura que el formulario se muestre en línea */
+}
+
+.profile-action-link:hover {
+    background-color: #f8f9fa; /* Color de fondo al pasar el ratón */
+}
