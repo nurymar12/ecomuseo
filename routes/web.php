@@ -56,9 +56,9 @@ Route::get('/google-auth/redirect', function () {
     // $user->token
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/home', [HomeController::class, 'index'])
     ->middleware(['auth', 'verified', 'redirect.if.not.admin.or.volunteer'])

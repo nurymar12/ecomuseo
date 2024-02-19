@@ -1,4 +1,4 @@
 # Ecomuseo LLAQTA AMARU -YOYEN KUWA
 
-![t2i](assets/fachada.jpg)
+![t2i](public/welcome/fachada_ecomuseo.jpg)
 

@@ -1,3 +1,5 @@
+<link rel="icon" type="image/svg+xml" href="{{ asset('images/logo_vectorizado.svg') }}">
+
 @extends('layouts.app_new')
 
 @section('content')
@@ -14,16 +16,14 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
-
-                    <p>This is your application dashboard.</p>
+                    {{-- {{ __('You are logged in!') }} --}}
                     @canany(['create-role', 'edit-role', 'delete-role'])
                         <a class="btn btn-primary" href="{{ route('roles.index') }}">
-                            <i class="bi bi-person-fill-gear"></i> Manage Roles</a>
+                            <i class="bi bi-person-fill-gear"></i> Gestionar Roles</a>
                     @endcanany
                     @canany(['create-user', 'edit-user', 'delete-user'])
                         <a class="btn btn-success" href="{{ route('users.index') }}">
-                            <i class="bi bi-people"></i> Manage Users</a>
+                            <i class="bi bi-people"></i> Gestionar usuarios</a>
                     @endcanany
                     {{-- @canany(['create-product', 'edit-product', 'delete-product'])
                         <a class="btn btn-warning" href="{{ route('products.index') }}">
