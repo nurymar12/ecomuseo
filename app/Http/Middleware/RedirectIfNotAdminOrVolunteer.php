@@ -16,7 +16,7 @@ class RedirectIfNotAdminOrVolunteer
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->hasRole('Visitor')) {
+        if (Auth::check() && Auth::user()->hasRole('Product Manager')) {
             return redirect('/');
         }
 

@@ -7,6 +7,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 // Importa el middleware Role de Spatie
 use Spatie\Permission\Middleware\RoleMiddleware;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,9 +60,15 @@ Route::get('/google-auth/redirect', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'redirect.if.not.admin.or.volunteer'])->name('dashboard');
+Route::get('/home', [HomeController::class, 'index'])
+    ->middleware(['auth', 'verified', 'redirect.if.not.admin.or.volunteer'])
+    ->name('home');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified', 'redirect.if.not.admin.or.volunteer'])->name('dashboard');
+
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::middleware('auth')->group(function () {
@@ -66,5 +76,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::resources([
+    'roles' => RoleController::class,
+    'users' => UserController::class,
+]);
+
 
 require __DIR__.'/auth.php';
