@@ -22,18 +22,31 @@
                     @if (Route::has('login'))
                         {{-- <div class="auth-links" id="auth-links"> --}}
                             @auth
+                                @role('Super Admin')
+                                    <a href="{{ url('/home') }}" class="intranet-btn">INTRANET</a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();" class="logout-btn">
+                                        Cerrar sesión
+                                        </a>
+                                    </form>
+                                    {{-- <a>Eres admin</a> --}}
+                                @else
+                                    <a href="{{ route('profile.edit') }}" class="profile-btn">Perfil</a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();" class="logout-btn">
+                                        Cerrar sesión
+                                        </a>
+                                    </form>
+                                    {{-- <a>No eres admin</a> --}}
+                                @endrole
 
-                                {{-- <a href="{{ url('/dashboard') }}" id="link-dashboard">Dashboard</a> --}}
 
-                                <a href="{{ route('profile.edit') }}" class="profile-btn">Perfil</a>
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <a href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="logout-btn">
-                                    Cerrar sesión
-                                    </a>
-                                </form>
                             @else
                                 <a href="{{ route('login') }}" class="login-btn">Inicar sesión</a>
                                 @if (Route::has('register'))
