@@ -78,7 +78,7 @@
                                             </div>
                                         </button>
                                     </x-slot>
-
+                                    {{-- <div class="mt-3 space-y-1" name="content"> --}}
                                     <x-slot name="content">
                                         <x-dropdown-link :href="route('profile.edit')">
                                             {{ __('Profile') }}
@@ -95,6 +95,7 @@
                                             </x-dropdown-link>
                                         </form>
                                     </x-slot>
+                                    {{-- </div> --}}
                                 </x-dropdown>
                             </div>
                         @endguest

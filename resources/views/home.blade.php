@@ -1,4 +1,5 @@
 <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo_vectorizado.svg') }}">
+<link rel="stylesheet" href="{{ asset('css/intranet/home.css') }}">
 
 @extends('layouts.app_new')
 
