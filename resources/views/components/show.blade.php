@@ -1,6 +1,25 @@
+@php
+use League\CommonMark\CommonMarkConverter;
+
+$converter = new CommonMarkConverter([
+    'allow_unsafe_links' => false,
+]);
+
+$convertedContent = $converter->convertToHtml($component->contentComponente);
+@endphp
+<style>
+    .content-box {
+        border: 1px solid #000; /* Añade un borde negro */
+        padding: 15px; /* Añade un poco de espacio interior */
+        margin-bottom: 20px; /* Añade espacio debajo del cuadro */
+        background-color: #fff; /* Fondo blanco para el contenido */
+        color: #333; /* Texto oscuro para mejor legibilidad */
+    }
+</style>
 @extends('layouts.app_new')
 
 @section('content')
+
 
 <div class="row justify-content-center">
     <div class="col-md-8">
@@ -32,8 +51,10 @@
 
                 <div class="row">
                     <label for="contentComponente" class="col-md-4 col-form-label text-md-end text-start"><strong>Content:</strong></label>
-                    <div class="col-md-6" style="line-height: 35px;">
-                        {!! $component->contentComponente !!}
+                    <div class="col-md-6">
+                        <div class="content-box" style="line-height: 35px;">
+                            {!! $convertedContent !!}
+                        </div>
                     </div>
                 </div>
 

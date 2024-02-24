@@ -2,9 +2,15 @@
 
 @section('content')
 
+<!-- Font Awesome CSS (Puede que necesites ajustar la versión o el enlace del CDN) -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<!-- EasyMDE CSS -->
+<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+
+
 <div class="row justify-content-center">
     <div class="col-md-8">
-
         <div class="card">
             <div class="card-header">
                 <div class="float-start">
@@ -72,5 +78,33 @@
         </div>
     </div>
 </div>
+
+<!-- EasyMDE JS -->
+<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var easyMDE = new EasyMDE({
+        element: document.getElementById('contentComponente'),
+        autoDownloadFontAwesome: true,
+        showPreview: true, // Automatically show preview of Markdown
+        sideBySideFullscreen: false, // Disable side-by-side fullscreen mode
+        minHeight: '400px', // Adjust the minimum height of the editor
+        parsingConfig: {
+            allowAtxHeaderWithoutSpace: true,
+            strikethrough: false,
+            underscoresBreakWords: true,
+        },
+        previewRender: function(plainText, preview) { // Async method
+            setTimeout(function(){
+                preview.innerHTML = this.parent.markdown(plainText);
+            }.bind(this), 250);
+
+            return "";
+        },
+        // Other configurations you might want to add
+    });
+});
+</script>
 
 @endsection

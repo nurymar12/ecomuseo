@@ -2,6 +2,11 @@
 
 @section('content')
 
+<!-- Font Awesome for EasyMDE icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- EasyMDE CSS -->
+<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
@@ -73,5 +78,20 @@
         </div>
     </div>
 </div>
+
+<!-- Include EasyMDE JS -->
+<script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var easyMDE = new EasyMDE({
+            element: document.getElementById('contentComponente'),
+            autoDownloadFontAwesome: true,
+            showPreview: true,
+            sideBySideFullscreen: false,
+            minHeight: '200px'
+        });
+    });
+</script>
 
 @endsection
