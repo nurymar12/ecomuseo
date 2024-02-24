@@ -35,8 +35,9 @@
                         <img src="{{ asset($component->rutaImagenComponente) }}" alt="Foto de {{ $component->titleComponente }}">
                         <h3>{{ $component->titleComponente }}</h3>
                         <p>{{ $component->description }}</p>
-                        <!-- Aquí puedes añadir un enlace a más información sobre el componente, si aplica -->
-                        <a href="#">Más info</a>
+                        <!-- Dentro de tu loop en la página de bienvenida -->
+                        <a href="{{ route('components.publicShow', $component->id) }}">Más info</a>
+
                     </div>
                 </div>
                 @endforeach

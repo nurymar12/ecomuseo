@@ -86,6 +86,10 @@ Route::resources([
     'components' => ComponentsController::class,
 ]);
 
+Route::get('/components/public/{id}', [ComponentsController::class, 'publicShow'])->name('components.publicShow');
+
+
+
 
 // Asegúrate de que la ruta apunte a la vista dentro de la subcarpeta 'static'
 Route::get('/static/contactUs', function () {

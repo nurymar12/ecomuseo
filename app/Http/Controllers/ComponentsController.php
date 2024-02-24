@@ -69,6 +69,14 @@ class ComponentsController extends Controller
         ]);
     }
 
+    public function publicShow($id)
+    {
+        $component = Components::findOrFail($id);
+        // Asumiendo que `components_detail` es el nombre de tu nueva vista.
+        return view('components.component_detail', compact('component'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -1,0 +1,27 @@
+.component-detail {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.component-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.component-title {
+    font-size: 2rem;
+    margin-top: 15px;
+}
+
+.component-description {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #555;
+}
+
+.component-content {
+    margin-top: 20px;
+}
