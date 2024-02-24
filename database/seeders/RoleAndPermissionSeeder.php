@@ -26,6 +26,9 @@ class RoleAndPermissionSeeder extends Seeder
             'create-component',
             'edit-component',
             'delete-component',
+            'create-tour',
+            'edit-tour',
+            'delete-tour',
          ];
 
           // Looping and Inserting Array's Permissions into Permission Table
@@ -48,6 +51,9 @@ class RoleAndPermissionSeeder extends Seeder
             'create-component',
             'edit-component',
             'delete-component',
+            'create-tour',
+            'edit-tour',
+            'delete-tour',
         ]);
 
         $admin->givePermissionTo([

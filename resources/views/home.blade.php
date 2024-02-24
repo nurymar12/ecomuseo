@@ -30,6 +30,11 @@
                         <a class="btn btn-warning" href="{{ route('components.index') }}">
                             <i class="bi bi-bag"></i> Manage Components</a>
                     @endcanany
+                    @canany(['create-tour', 'edit-tour', 'delete-tour'])
+                        <a class="btn btn-secondary" href="{{ route('tours.index') }}">
+                            <i class="bi bi-bag"></i> Manage Tour</a>
+                    @endcanany
+
                     <p>&nbsp;</p>
                 </div>
             </div>

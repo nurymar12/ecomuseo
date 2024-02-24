@@ -13,7 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\WelcomeController;
-
+use App\Http\Controllers\TourController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,6 +84,8 @@ Route::resources([
     'roles' => RoleController::class,
     'users' => UserController::class,
     'components' => ComponentsController::class,
+    'tours' => TourController::class,
+
 ]);
 
 Route::get('/components/public/{id}', [ComponentsController::class, 'publicShow'])->name('components.publicShow');

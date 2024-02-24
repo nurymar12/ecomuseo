@@ -5,19 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Components extends Model
+class Tour extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'titleComponente',
+        'name',
         'description',
-        'contentComponente',
-        'rutaImagenComponente',
+        'start_date',
+        'end_date',
+        'max_people',
+        'contact_info',
     ];
 
-    public function tours()
+    public function components()
     {
-        return $this->belongsToMany(Tour::class);
+        return $this->belongsToMany(Components::class);
     }
 }
