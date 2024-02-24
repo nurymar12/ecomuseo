@@ -11,6 +11,10 @@ use Spatie\Permission\Middleware\RoleMiddleware;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ComponentsController;
+use App\Http\Controllers\WelcomeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +26,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/google-auth/redirect', function () {
     return Socialite::driver('google')->redirect();
@@ -80,6 +83,7 @@ Route::middleware('auth')->group(function () {
 Route::resources([
     'roles' => RoleController::class,
     'users' => UserController::class,
+    'components' => ComponentsController::class,
 ]);
 
 

@@ -23,9 +23,9 @@ class RoleAndPermissionSeeder extends Seeder
             'create-user',
             'edit-user',
             'delete-user',
-            'create-product',
-            'edit-product',
-            'delete-product'
+            'create-component',
+            'edit-component',
+            'delete-component',
          ];
 
           // Looping and Inserting Array's Permissions into Permission Table
@@ -35,21 +35,34 @@ class RoleAndPermissionSeeder extends Seeder
 
         $superAdmin = Role::create(['name' => 'Super Admin']);
         $admin = Role::create(['name' => 'Admin']);
-        $productManager = Role::create(['name' => 'Product Manager']);
+        $visitor = Role::create(['name' => 'Visitor']);
+        $volunteerRole = Role::create(['name' => 'Volunteer']);
+
+        $superAdmin->givePermissionTo([
+            'create-role',
+            'edit-role',
+            'delete-role',
+            'create-user',
+            'edit-user',
+            'delete-user',
+            'create-component',
+            'edit-component',
+            'delete-component',
+        ]);
 
         $admin->givePermissionTo([
             'create-user',
             'edit-user',
             'delete-user',
-            'create-product',
-            'edit-product',
-            'delete-product'
+            'create-component',
+            'edit-component',
+            'delete-component'
         ]);
 
-        $productManager->givePermissionTo([
-            'create-product',
-            'edit-product',
-            'delete-product'
+        $volunteerRole->givePermissionTo([
+            'create-component',
+            'edit-component',
+            'delete-component'
         ]);
 
         // Permission::create(['name' => 'view-pages']);
@@ -85,19 +98,19 @@ class RoleAndPermissionSeeder extends Seeder
         //     'delete-blog-posts',
         // ]);
 
-        $user = User::first();
+        // $user = User::first();
 
-        $user->assignRole('Super Admin');
+        // $user->assignRole('Super Admin');
 
-        $users = User::all();
-        if ($users->isNotEmpty()) {
-            $users->first()->assignRole($superAdmin); // Asigna el rol de Admin al primer usuario
+        // $users = User::all();
+        // if ($users->isNotEmpty()) {
+        //     $users->first()->assignRole($superAdmin); // Asigna el rol de Admin al primer usuario
 
-            // Asigna el rol de Visitor a todos los demás usuarios
-            $users->slice(1)->each(function ($user) use ($admin) {
-                $user->assignRole($admin);
-            });
-        }
+        //     // Asigna el rol de Visitor a todos los demás usuarios
+        //     $users->slice(1)->each(function ($user) use ($admin) {
+        //         $user->assignRole($admin);
+        //     });
+        // }
 
     }
 }

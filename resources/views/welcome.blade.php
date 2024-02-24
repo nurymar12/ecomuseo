@@ -25,36 +25,21 @@
         <section class="carousel" id="carousel">
         </section>
 
-        <!-- Actividades -->
+        <!-- Componentes -->
         <section class="actividades" id="actividades">
-            <h1 class="titulo"> <span>Actividades</span></h1>
+            <h1 class="titulo"> <span>Componentes</span></h1>
             <div class="box-container">
+                @foreach ($components as $component)
                 <div class="box">
                     <div class="actividad">
-                        <img src="{{ asset('images/welcome/Photo_Act1.jpg') }}" alt="Foto de Abejas">
-                        <h3>Ver abejas</h3>
-                        <p>¿Quieres a ver las abejas Meliponas? Descubre todo lo que tenemos preparado para ti.</p>
-                        <a href="#">Más info</a>
-                    </div>
-                    <div class="actividad">
-                        <img src="{{ asset('images/welcome/Photo_Act2.jpg') }}" alt="Foto de Huayruro">
-                        <h3>Huayruro</h3>
-                        <p>Realiza una busqueda en el bosque para encontrar los arboles de Huayruro</p>
-                        <a href="#">Más info</a>
-                    </div>
-                    <div class="actividad">
-                        <img src="{{ asset('images/welcome/Photo_Act3.jpg') }}" alt="Foto de Cashaponas">
-                        <h3>Cashaponas</h3>
-                        <p>Con sus grandes ramas que parecen piernas. Ven y descubre mas de ellas.</p>
-                        <a href="#">Más info</a>
-                    </div>
-                        <div class="actividad">
-                        <img src="{{ asset('images/welcome/Photo_Act4.jpg') }}" alt="Foto de Interpretacion">
-                        <h3>Interpretacion</h3>
-                        <p>Aprendamos como cuidar la naturaleza que nos rodea</p>
+                        <img src="{{ asset($component->rutaImagenComponente) }}" alt="Foto de {{ $component->titleComponente }}">
+                        <h3>{{ $component->titleComponente }}</h3>
+                        <p>{{ $component->description }}</p>
+                        <!-- Aquí puedes añadir un enlace a más información sobre el componente, si aplica -->
                         <a href="#">Más info</a>
                     </div>
                 </div>
+                @endforeach
             </div>
         </section>
 
