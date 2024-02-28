@@ -14,7 +14,7 @@
                 <img src="{{ asset('images/logo_vectorizado.svg') }}" alt="Logo" class="logo-svg">
                 <div class="nav-links">
                     <a href="/" class="nav-item">Inicio</a>
-                    <a href="#" class="nav-item">Tour</a>
+                    <a href="/tour" class="nav-item">Tour</a>
                     <a href="#" class="nav-item">Blog</a>
                     <a href="/static/contactUs" class="nav-item">Contacto</a>
                 </div>

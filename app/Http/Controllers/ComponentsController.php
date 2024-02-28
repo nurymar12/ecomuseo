@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
+use Parsedown;
 
 
 class ComponentsController extends Controller
@@ -72,6 +73,12 @@ class ComponentsController extends Controller
     public function publicShow($id)
     {
         $component = Components::findOrFail($id);
+        // $component = Component::findOrFail($id);
+        // $component->contentComponente = Markdown::parse($component->contentComponente);
+
+        $parsedown = new Parsedown();
+
+        $component->contentComponente = $parsedown->text($component->contentComponente);
         // Asumiendo que `components_detail` es el nombre de tu nueva vista.
         return view('components.component_detail', compact('component'));
     }

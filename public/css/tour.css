@@ -1,0 +1,68 @@
+.tours .box {
+    display: flex;
+    border: 2px solid #000;
+    margin: 20px;
+    background: #fff;
+}
+
+.tours .box .image-section {
+    width: 30%;
+    /* background: #eee; Color de fondo temporal para representar la zona de la imagen */
+    background: url('../images/tour/fondo_tours.jpeg') no-repeat center center;
+    /* background: rgb(1, 255, 1); */
+    background-size: cover;
+    /* filter: blur(10px); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.tours .box .image-section img {
+    max-width: 30%;
+    height: auto;
+    position: relative; /* Asegura que la imagen se sitúe sobre el pseudo-elemento */
+    z-index: 1; /* Asegura que la imagen se sitúe sobre el pseudo-elemento difuminado */
+}
+
+.tours .box .info-section {
+    width: 70%;
+    padding: 15px;
+}
+
+.tours .box .info-section h3 {
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.tours .box .info-section .tour-details {
+    margin: 10px 0;
+}
+
+.tours .box .info-section .tour-details span {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.tours .box .info-section .tour-components {
+    margin: 10px 0;
+    font-size: 0.9em;
+}
+
+.tours .box .info-section .tour-components ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tours .box .info-section .tour-components ul li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.tours .box .info-section .tour-components ul li:before {
+    content: "•";
+    padding-right: 5px;
+    color: #333;
+}

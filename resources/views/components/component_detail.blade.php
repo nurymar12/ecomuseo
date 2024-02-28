@@ -29,7 +29,7 @@
                 {{ $component->description }}
             </section>
             <section style="padding: 1em;">
-                {!! nl2br(e($component->contentComponente)) !!}
+                {!! $component->contentComponente !!}
             </section>
         </article>
     </main>

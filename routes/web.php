@@ -90,6 +90,8 @@ Route::resources([
 
 Route::get('/components/public/{id}', [ComponentsController::class, 'publicShow'])->name('components.publicShow');
 
+Route::get('/tour', [TourController::class, 'publicShow'])->name('tours.publicShow');
+
 
 
 

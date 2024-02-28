@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateTourRequest;
 use Carbon\Carbon;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Arr; // Importa la clase Arr para trabajar con arreglos
 
 
 class TourController extends Controller
@@ -76,6 +77,30 @@ class TourController extends Controller
             'tour' => $tour
         ]);
     }
+
+    public function publicShow(Tour $tour)
+    {
+        // Obtener todos los tours con sus componentes relacionados
+        $tours = Tour::with('components')->get();
+
+        // Añadir una imagen aleatoria a cada tour
+        foreach ($tours as $tour) {
+            // Asegúrate de que hay componentes y que tienen imágenes antes de intentar obtener una
+            if ($tour->components->isNotEmpty() && $tour->components->first()->rutaImagenComponente) {
+                // Obtener un componente aleatorio que tenga una imagen
+                $randomComponentWithImage = $tour->components->whereNotNull('rutaImagenComponente')->random();
+                // Añadir la ruta de imagen aleatoria al objeto tour para su uso en la vista
+                $tour->randomImage = $randomComponentWithImage->rutaImagenComponente;
+            } else {
+                // Si no hay componentes con imágenes, asignar un valor por defecto o dejarlo nulo
+                $tour->randomImage = null; // O la ruta a una imagen por defecto si es necesario
+            }
+        }
+
+        // Pasar los tours a la vista
+        return view('tour', compact('tours'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
