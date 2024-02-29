@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\VisitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,13 +86,15 @@ Route::resources([
     'users' => UserController::class,
     'components' => ComponentsController::class,
     'tours' => TourController::class,
-
+    'visits' => VisitController::class,
 ]);
 
 Route::get('/components/public/{id}', [ComponentsController::class, 'publicShow'])->name('components.publicShow');
 
 Route::get('/tour', [TourController::class, 'publicShow'])->name('tours.publicShow');
 
+Route::post('/visits/{visit}/approve', [VisitController::class, 'approve'])->name('visits.approve');
+Route::post('/visits/{visit}/decline', [VisitController::class, 'decline'])->name('visits.decline');
 
 
 

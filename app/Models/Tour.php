@@ -22,4 +22,16 @@ class Tour extends Model
     {
         return $this->belongsToMany(Components::class);
     }
+
+    public function visits()
+    {
+        return $this->hasMany(Visit::class);
+    }
+
+    // Método para calcular los cupos disponibles
+    public function getAvailableSeatsAttribute()
+    {
+        $reservedSeats = $this->visits()->whereIn('status', ['pending', 'approved'])->sum('number_of_people');
+        return $this->max_people - $reservedSeats;
+    }
 }

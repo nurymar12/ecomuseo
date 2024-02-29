@@ -66,3 +66,33 @@
     padding-right: 5px;
     color: #333;
 }
+
+.reserve-button {
+    background-color: green; /* Verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; /* Bordes curveados */
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    margin: 4px 2px;
+    transition: all 0.3s ease 0s;
+}
+
+.reserve-button:hover {
+    background-color: green; /* Un verde un poco más oscuro para el hover */
+}
+
+.info-section {
+    position: relative;
+}
+
+.info-section .reserve-button-container {
+    text-align: right; /* Alinea el botón a la derecha */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+}
+
