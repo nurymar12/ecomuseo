@@ -51,15 +51,6 @@
 
 
                     </td>
-                    {{-- <td>
-                        <form action="{{ route('visits.destroy', $visit->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <a href="{{ route('visits.show', $visit->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-                            <a href="{{ route('visits.edit', $visit->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this visit?');"><i class="bi bi-trash"></i> Delete</button>
-                        </form>
-                    </td> --}}
                 </tr>
                 @empty
                     <td colspan="8">

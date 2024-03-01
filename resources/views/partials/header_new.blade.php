@@ -15,14 +15,14 @@
                 <div class="nav-links">
                     <a href="/" class="nav-item">Inicio</a>
                     <a href="/tour" class="nav-item">Tour</a>
-                    <a href="#" class="nav-item">Blog</a>
+                    <a href="/blog" class="nav-item">Blog</a>
                     <a href="/static/contactUs" class="nav-item">Contacto</a>
                 </div>
                 <div class="user-actions" id="auth-buttons">
                     @if (Route::has('login'))
                         {{-- <div class="auth-links" id="auth-links"> --}}
                             @auth
-                                @role('Super Admin')
+                                @role('Super Admin|Admin|Volunteer')
                                     <a href="{{ url('/home') }}" class="intranet-btn">INTRANET</a>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf

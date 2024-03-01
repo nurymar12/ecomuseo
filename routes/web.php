@@ -15,6 +15,7 @@ use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\VisitController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,8 @@ Route::resources([
     'components' => ComponentsController::class,
     'tours' => TourController::class,
     'visits' => VisitController::class,
+    'blogs' => BlogController::class,
+
 ]);
 
 Route::get('/components/public/{id}', [ComponentsController::class, 'publicShow'])->name('components.publicShow');
@@ -96,6 +99,13 @@ Route::get('/tour', [TourController::class, 'publicShow'])->name('tours.publicSh
 Route::post('/visits/{visit}/approve', [VisitController::class, 'approve'])->name('visits.approve');
 Route::post('/visits/{visit}/decline', [VisitController::class, 'decline'])->name('visits.decline');
 
+Route::get('/blog', [BlogController::class, 'publicIndex'])->name('blogs.public_index');
+// Route::get('/blog', [BlogController::class, 'publicShow'])->name('blogs.publicShow');
+Route::get('blog/{id}', [BlogController::class, 'publicShow'])->name('blogs.publicShow');
+
+
+Route::post('/blogs/{blog}/approve', [BlogController::class, 'approve'])->name('blogs.approve');
+Route::post('/blogs/{blog}/decline', [BlogController::class, 'decline'])->name('blogs.decline');
 
 
 // Asegúrate de que la ruta apunte a la vista dentro de la subcarpeta 'static'

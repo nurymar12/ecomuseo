@@ -38,6 +38,10 @@
                         <a class="btn btn-info" href="{{ route('visits.index') }}">
                             <i class="bi bi-calendar-week"></i> Manage Visits</a>
                     @endcanany
+                    @canany(['create-blog', 'edit-blog', 'delete-blog'])
+                        <a class="btn btn-info" href="{{ route('blogs.index') }}">
+                            <i class="bi bi-newspaper"></i> Manage Blogs</a>
+                    @endcanany
 
                     <p>&nbsp;</p>
                 </div>
