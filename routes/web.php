@@ -109,8 +109,12 @@ Route::post('/blogs/{blog}/decline', [BlogController::class, 'decline'])->name('
 
 
 // Asegúrate de que la ruta apunte a la vista dentro de la subcarpeta 'static'
-Route::get('/static/contactUs', function () {
-    return view('static.contactUs');
+// Route::get('/static/contactUs', function () {
+//     return view('static.contactUs');
+// });
+
+Route::get('/static/paymentsInfo', function () {
+    return view('static.paymentInfo');
 });
 
 

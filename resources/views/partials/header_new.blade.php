@@ -16,7 +16,7 @@
                     <a href="/" class="nav-item">Inicio</a>
                     <a href="/tour" class="nav-item">Tour</a>
                     <a href="/blog" class="nav-item">Blog</a>
-                    <a href="/static/contactUs" class="nav-item">Contacto</a>
+                    <a href="/static/paymentsInfo" class="nav-item">Donar</a>
                 </div>
                 <div class="user-actions" id="auth-buttons">
                     @if (Route::has('login'))
