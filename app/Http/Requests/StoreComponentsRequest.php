@@ -22,10 +22,10 @@ class StoreComponentsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titleComponente' => 'required|string|max:255',
-            // unique:components,titleComponente
+            'titleComponente' => 'required|string|max:255|unique:components,titleComponente',
+            // |unique:components,titleComponente
             'description' => 'required|string|max:1000',
-            'contentComponente' => 'nullable|string|max:10000',
+            'contentComponente' => 'nullable|string',
             'rutaImagenComponente' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }

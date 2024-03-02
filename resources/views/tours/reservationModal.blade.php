@@ -25,7 +25,7 @@
             <div class="form-group">
               <label for="number_of_people">Número de personas:</label>
               <input type="number" class="form-control" id="number_of_people" name="number_of_people" required>
-              <label for="additional_info">Información Adicional (opcional):</label>
+              <label for="additional_info">Información de contacto:</label>
               <textarea class="form-control" id="additional_info" name="additional_info" placeholder="Información de contacto" rows="3" required></textarea>
             </div>
 

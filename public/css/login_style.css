@@ -11,7 +11,6 @@ body {
 }
 
 .right-side {
-    /* background: url('tu-imagen-de-fondo.jpg') no-repeat center center; */
     background-color: #fff;
     background-size: cover;
     width: 50%;
@@ -19,6 +18,8 @@ body {
 }
 
 .left-side {
+    background: url('../images/fondo.jpeg') no-repeat center center;
+
     position: relative;
     width: 50%;
     background-color: skyblue;

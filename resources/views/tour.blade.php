@@ -40,6 +40,7 @@
                         </div>
                         <div class="info-section">
                             <h3>{{ $tour->name }}</h3>
+                            <p>{{$tour->description}}</p>
                             <div class="tour-details">
                                 <span><strong>Fecha:</strong> {{ $tour->start_date }} - {{ $tour->end_date }}</span>
                                 <span><strong>Capacidad:</strong> {{ $tour->available_seats }}</span>

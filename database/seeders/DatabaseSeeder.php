@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             AdminUserSeeder::class,
             componentSeeder::class,
             ToursTableSeeder::class,
-
+            BlogTableSeeder::class,
 
 
             // Puedes agregar otros seeders aquí si es necesario
