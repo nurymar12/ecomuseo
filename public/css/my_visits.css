@@ -1,0 +1,31 @@
+.container {
+    padding: 20px;
+}
+.table-container {
+    width: 70%;
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.table {
+    width: 100%;
+    margin-bottom: 0;
+}
+.visit-header {
+    background-color: #f8f9fa;
+    color: #495057;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+.visit-header h3 {
+    margin: 0;
+}
+.visit-info td {
+    padding: 10px;
+}
+.pending { background-color: #fff3cd; }
+.approved { background-color: #d4edda; }
+.rejected { background-color: #f8d7da; }

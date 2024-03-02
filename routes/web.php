@@ -96,6 +96,9 @@ Route::get('/components/public/{id}', [ComponentsController::class, 'publicShow'
 
 Route::get('/tour', [TourController::class, 'publicShow'])->name('tours.publicShow');
 
+
+Route::get('/my-visits', [VisitController::class, 'publicVisits'])->name('visits.publicVisits');
+
 Route::post('/visits/{visit}/approve', [VisitController::class, 'approve'])->name('visits.approve');
 Route::post('/visits/{visit}/decline', [VisitController::class, 'decline'])->name('visits.decline');
 
@@ -106,6 +109,7 @@ Route::get('blog/{id}', [BlogController::class, 'publicShow'])->name('blogs.publ
 
 Route::post('/blogs/{blog}/approve', [BlogController::class, 'approve'])->name('blogs.approve');
 Route::post('/blogs/{blog}/decline', [BlogController::class, 'decline'])->name('blogs.decline');
+
 
 
 // Asegúrate de que la ruta apunte a la vista dentro de la subcarpeta 'static'

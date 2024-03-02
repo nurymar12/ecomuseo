@@ -18,6 +18,14 @@
         <!-- Sección de tours -->
         <section class="tours" id="tours">
             <h1 class="titulo"><span>Nuestros Tours</span></h1>
+            @auth
+                <div class="custom-button-container">
+                    <a href="{{ route('visits.publicVisits') }}" class="custom-button">Mis Tours</a>
+                    {{-- <a href="#" class="custom-button">Mis Tours</a> --}}
+
+                </div>
+            @endauth
+
             <div class="box-container">
                 @foreach ($tours as $tour)
                     @if ($tour->available_seats > 0) <!-- Solo mostrar si hay asientos disponibles -->

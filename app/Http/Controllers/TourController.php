@@ -17,6 +17,7 @@ class TourController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('publicShow');
+        // $this->middleware('auth')->except(['publicShow', 'publicIndex']);
 
         // $this->middleware('auth');
         $this->middleware('permission:create-tour|edit-tour|delete-tour', ['only' => ['index','show']]);
@@ -81,21 +82,19 @@ class TourController extends Controller
         ]);
     }
 
-    public function publicShow(Tour $tour)
+    public function publicShow()
     {
-        // Obtener todos los tours con sus componentes relacionados
-        $tours = Tour::with('components')->get();
+        // Obtener todos los tours con sus componentes relacionados que inician hoy o después
+        $tours = Tour::with('components')
+                    ->whereDate('start_date', '>=', now()->toDateString()) // Filtra para incluir solo tours que inician hoy o después
+                    ->get();
 
-        // Añadir una imagen aleatoria a cada tour
+        // Añadir una imagen aleatoria a cada tour, si aplica
         foreach ($tours as $tour) {
-            // Asegúrate de que hay componentes y que tienen imágenes antes de intentar obtener una
             if ($tour->components->isNotEmpty() && $tour->components->first()->rutaImagenComponente) {
-                // Obtener un componente aleatorio que tenga una imagen
                 $randomComponentWithImage = $tour->components->whereNotNull('rutaImagenComponente')->random();
-                // Añadir la ruta de imagen aleatoria al objeto tour para su uso en la vista
                 $tour->randomImage = $randomComponentWithImage->rutaImagenComponente;
             } else {
-                // Si no hay componentes con imágenes, asignar un valor por defecto o dejarlo nulo
                 $tour->randomImage = null; // O la ruta a una imagen por defecto si es necesario
             }
         }
@@ -103,6 +102,7 @@ class TourController extends Controller
         // Pasar los tours a la vista
         return view('tour', compact('tours'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

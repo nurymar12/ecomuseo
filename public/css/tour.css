@@ -96,3 +96,22 @@
     margin: 10px;
 }
 
+.custom-button-container {
+    text-align: right; /* Alinea el botón a la derecha */
+    padding: 20px; /* Ajusta el espaciado alrededor del botón */
+}
+
+.custom-button {
+    background-color: #ffcc00; /* Color amarillo */
+    color: #000; /* Texto en negro */
+    padding: 10px 20px; /* Ajusta el tamaño del botón */
+    border-radius: 20px; /* Bordes curveados */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar el color de fondo */
+}
+
+.custom-button:hover {
+    background-color: #e6b800; /* Color amarillo más oscuro al pasar el mouse */
+}
+

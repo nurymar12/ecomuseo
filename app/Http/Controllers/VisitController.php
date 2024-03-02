@@ -123,6 +123,23 @@ class VisitController extends Controller
         return view('visits.show', compact('visit'));
     }
 
+    public function publicVisits()
+    {
+        // Asegúrate de que solo los usuarios autenticados puedan acceder a sus visitas
+        $userId = auth()->id();
+
+        // Obtener todas las visitas del usuario para hoy o fechas futuras, incluyendo la información del tour asociado
+        $visits = Visit::with('tour')
+                        ->where('user_id', $userId)
+                        ->whereDate('requested_date', '>=', now()->toDateString()) // Filtra para incluir solo visitas de hoy en adelante
+                        ->orderBy('requested_date', 'asc') // Ordena las visitas por la fecha solicitada, de más antigua a más reciente
+                        ->get();
+
+        // Pasar las visitas a la vista correspondiente
+        return view('visits.publicVisits', compact('visits'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */
