@@ -23,6 +23,7 @@ class StoreComponentsRequest extends FormRequest
     {
         return [
             'titleComponente' => 'required|string|max:255',
+            // unique:components,titleComponente
             'description' => 'required|string|max:1000',
             'contentComponente' => 'nullable|string|max:10000',
             'rutaImagenComponente' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

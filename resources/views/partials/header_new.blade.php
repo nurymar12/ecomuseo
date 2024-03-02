@@ -34,7 +34,7 @@
                                     </form>
                                     {{-- <a>Eres admin</a> --}}
                                 @else
-                                    <a href="{{ route('profile.edit') }}" class="profile-btn">Perfil</a>
+                                    {{-- <a href="{{ route('profile.edit') }}" class="profile-btn">Perfil</a> --}}
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
                                         <a href="route('logout')"
