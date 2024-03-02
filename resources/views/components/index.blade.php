@@ -13,7 +13,7 @@
                 <th scope="col">S#</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Descripcion</th>
-                <th scope="col">Contenido</th>
+                {{-- <th scope="col">Contenido</th> --}}
                 <th scope="col">Imagen</th>
                 </tr>
             </thead>
@@ -23,7 +23,7 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $component->titleComponente }}</td>
                     <td>{{ $component->description }}</td>
-                    <td>{{ $component->contentComponente }}</td>
+                    {{-- <td>{{ $component->contentComponente }}</td> --}}
                     <td>
                         <img src="{{ asset($component->rutaImagenComponente) }}" width="100" height="100" alt="Component Image">
                     </td>

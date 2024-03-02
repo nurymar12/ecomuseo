@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
 use Parsedown;
+use Illuminate\Support\Facades\DB;
 
 
 class ComponentsController extends Controller
@@ -19,11 +20,13 @@ class ComponentsController extends Controller
      */
     public function __construct()
     {
-       $this->middleware('auth');
-       $this->middleware('permission:create-component|edit-component|delete-component', ['only' => ['index','show']]);
-       $this->middleware('permission:create-component', ['only' => ['create','store']]);
-       $this->middleware('permission:edit-component', ['only' => ['edit','update']]);
-       $this->middleware('permission:delete-component', ['only' => ['destroy']]);
+        $this->middleware('auth')->except('publicShow');
+        // $this->middleware('auth');
+        $this->middleware('permission:create-component|edit-component|delete-component', ['only' => ['index','show']]);
+        $this->middleware('permission:create-component', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-component', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-component', ['only' => ['destroy']]);
+
     }
 
     public function index(): View
@@ -126,8 +129,22 @@ class ComponentsController extends Controller
      */
     public function destroy(Components $component)
     {
+        // Obtener todos los tours relacionados con este componente
+        $tours = $component->tours;
+
+        // Eliminar todos los tours relacionados
+        foreach ($tours as $tour) {
+            // Opcionalmente, antes de eliminar cada tour, podrías también necesitar
+            // desvincular o manejar otras relaciones que el tour tenga
+            // Por ejemplo, si los tours tienen visitas relacionadas que también necesitas eliminar:
+            // $tour->visits()->delete();
+
+            $tour->delete(); // Elimina el tour
+        }
+
+        // Una vez eliminados todos los tours relacionados, eliminar el componente
         $component->delete();
-        return redirect()->route('components.index')
-                ->withSuccess('Components is deleted successfully.');
+
+        return redirect()->route('components.index')->withSuccess('Componente y tours relacionados eliminados correctamente.');
     }
 }

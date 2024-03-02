@@ -55,21 +55,23 @@
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-                    <!-- Estado del blog -->
-                    <div class="mb-3 row">
-                        <label for="status" class="col-md-4 col-form-label text-md-end">Status</label>
-                        <div class="col-md-6">
-                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                                <option value="pending" {{ $blog->status == 'pending' ? 'selected' : '' }}>Pending</option>
-                                <option value="approved" {{ $blog->status == 'approved' ? 'selected' : '' }}>Approved</option>
-                                <option value="rejected" {{ $blog->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
-                            </select>
-                            @error('status')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                    @can('Super Admin|Admin')
+                        <!-- Estado del blog -->
+                        <div class="mb-3 row">
+                            <label for="status" class="col-md-4 col-form-label text-md-end">Status</label>
+                            <div class="col-md-6">
+                                <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
+                                    <option value="pending" {{ $blog->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                                    <option value="approved" {{ $blog->status == 'approved' ? 'selected' : '' }}>Approved</option>
+                                    <option value="rejected" {{ $blog->status == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                                </select>
+                                @error('status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
-                    </div>
+                    @endcan
+
 
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update Blog">

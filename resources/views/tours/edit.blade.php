@@ -4,7 +4,12 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card">
-            <div class="card-header">Edit Tour</div>
+            <div class="card-header">
+                <div class="float-start">Edit Tour</div>
+                <div class="float-end">
+                    <a href="{{ route('tours.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                </div>
+            </div>
             <div class="card-body">
                 <form action="{{ route('tours.update', $tour->id) }}" method="post" enctype="multipart/form-data">
                     @csrf

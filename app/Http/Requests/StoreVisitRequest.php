@@ -49,7 +49,7 @@ class StoreVisitRequest extends FormRequest
                     }
                 },
             ],
-            'additional_info' => 'nullable|string|max:255',
+            'additional_info' => 'required|string|max:255',
             // Aquí puedes agregar más reglas de validación según sea necesario
         ];
     }

@@ -31,8 +31,8 @@ class UpdateTourRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'start_date' => 'required|date_format:Y-m-d\TH:i',
-            'end_date' => 'required|date_format:Y-m-d\TH:i|after_or_equal:start_date',
+            'start_date' => 'required|date_format:Y-m-d\TH:i|after_or_equal:today',
+            'end_date' => 'required|date_format:Y-m-d\TH:i|after:start_date',
             'max_people' => 'required|integer|min:1',
             'contact_info' => 'required|string',
             'components' => 'sometimes|array',
@@ -44,21 +44,19 @@ class UpdateTourRequest extends FormRequest
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
+            $startDate = Carbon::parse($this->start_date);
+            $endDate = Carbon::parse($this->end_date);
+            $tourId = $this->route('tour')->id; // Obtiene el ID del tour desde la ruta
             if ($this->filled('components')) {
-                $startDate = Carbon::parse($this->start_date);
-                $endDate = Carbon::parse($this->end_date);
-                $tourId = $this->route('tour'); // Obtiene el ID del tour desde la ruta
-
-                // Verifica solapamientos excluyendo el tour actual
+                // Buscar tours que no sean el actual, que tengan los componentes seleccionados y que solapen con las fechas proporcionadas
                 $overlappingTours = Tour::whereHas('components', function ($query) {
-                    $query->whereIn('components.id', $this->components); // Especifica la tabla para 'id'
-                })->where(function ($query) use ($startDate, $endDate, $tourId) {
-                    $query->where(function ($query) use ($startDate, $endDate) {
-                        $query->whereBetween('start_date', [$startDate, $endDate])
-                              ->orWhereBetween('end_date', [$startDate, $endDate]);
-                    })->where('tours.id', '!=', $tourId); // Especifica la tabla para 'id' y usa la variable $tourId
-                })->exists();
-
+                    $query->whereIn('components.id', $this->components);
+                })->where(function ($query) use ($startDate, $endDate) {
+                    $query->whereBetween('start_date', [$startDate, $endDate])
+                          ->orWhereBetween('end_date', [$startDate, $endDate]);
+                })->where('id', '!=', $tourId) // Excluir el tour actual
+                ->exists();
+                // dd($tourId);
 
                 if ($overlappingTours) {
                     $validator->errors()->add('components', 'The selected components are already reserved for another tour within the provided date range.');
@@ -66,4 +64,7 @@ class UpdateTourRequest extends FormRequest
             }
         });
     }
+
+
+
 }

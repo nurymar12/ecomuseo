@@ -16,7 +16,9 @@ class TourController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('publicShow');
+
+        // $this->middleware('auth');
         $this->middleware('permission:create-tour|edit-tour|delete-tour', ['only' => ['index','show']]);
         $this->middleware('permission:create-tour', ['only' => ['create','store']]);
         $this->middleware('permission:edit-tour', ['only' => ['edit','update']]);
@@ -27,12 +29,13 @@ class TourController extends Controller
      */
     public function index(): View
     {
-        // Carga ansiosa de los componentes relacionados con cada tour y paginación
-        $tours = Tour::with('components')->latest()->paginate(4);
+        // Ordena los tours por 'start_date' desde el más reciente hasta el más lejano y luego pagina los resultados
+        $tours = Tour::with('components')->orderBy('start_date', 'desc')->paginate(10);
 
         // Pasar los tours a la vista
         return view('tours.index', compact('tours'));
     }
+
 
 
     /**
@@ -122,6 +125,7 @@ class TourController extends Controller
     {
         // Recuperar los datos validados
         $validatedData = $request->validated();
+
 
         // Actualizar el tour con los datos validados
         $tour->update($validatedData);
