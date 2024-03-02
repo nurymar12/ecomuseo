@@ -54,9 +54,7 @@ class BlogTableSeeder extends Seeder
             ],
             [
                 'title' => 'Las Abejas Meliponas y la Interpretación de Nuestros Ecosistemas',
-                'content' => '# Las Abejas Meliponas y la Interpretación de Nuestros Ecosistemas
-
-                Las Abejas Meliponas, también conocidas como abejas sin aguijón, juegan un papel crucial en la biodiversidad de nuestros ecosistemas, especialmente en las regiones tropicales. A través de su labor de polinización, estas abejas no solo contribuyen a la reproducción de plantas, sino que también ofrecen una ventana única a la comprensión de conceptos clave como la biodiversidad, los ecosistemas, las cadenas alimenticias y los ciclos biogeoquímicos.
+                'content' => '# Las Abejas Meliponas y la Interpretación de Nuestros Ecosistemas \nLas Abejas Meliponas, también conocidas como abejas sin aguijón, juegan un papel crucial en la biodiversidad de nuestros ecosistemas, especialmente en las regiones tropicales. A través de su labor de polinización, estas abejas no solo contribuyen a la reproducción de plantas, sino que también ofrecen una ventana única a la comprensión de conceptos clave como la biodiversidad, los ecosistemas, las cadenas alimenticias y los ciclos biogeoquímicos.
                 ![](https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/426406824_122124259892144048_7477040608248446991_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a73e89&_nc_ohc=0YVSQmG29ZwAX-TdbSl&_nc_ht=scontent-lim1-1.xx&oh=00_AfDdoa8BJ9hFg0XOqjOt5ln2y7NNPMBGpnhfGfRilNMRNg&oe=65E6D582)
 
                 ## Importancia de las Abejas Meliponas
