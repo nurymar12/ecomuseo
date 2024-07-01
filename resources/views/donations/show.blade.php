@@ -172,7 +172,7 @@
             e.preventDefault();
             var donationId = $(this).data('id');
             $.post('{{ url('/donations') }}/' + donationId + '/decline', {
-                _token: $('meta[name="csrf-token)').attr('content'),
+                _token: $('meta[name="csrf-token"]').attr('content'),
             }, function(response) {
                 window.location.reload();
             });
