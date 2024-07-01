@@ -11,7 +11,6 @@ body {
 }
 
 .right-side {
-    /* background: url('tu-imagen-de-fondo.jpg') no-repeat center center; */
     background-color: #fff;
     background-size: cover;
     width: 50%;
@@ -19,6 +18,8 @@ body {
 }
 
 .left-side {
+    background: url('../images/fondo.jpeg') no-repeat center center;
+
     position: relative;
     width: 50%;
     background-color: skyblue;
@@ -45,6 +46,10 @@ body {
     width: 120px; /* Ajusta el ancho según el tamaño deseado */
     height: auto; /* Mantiene la proporción de la imagen */
     margin-bottom: 20px; /* Espacio entre la imagen y el título */
+}
+
+.google_logo_svg {
+    width: 50px;
 }
 
 .login-form {
@@ -93,7 +98,7 @@ body {
     width: 80%;
     margin: 5px;
     padding: 10px;
-    background-color: #008f68;
+    background-color: #315530;
     color: white;
     border: none;
     cursor: pointer;

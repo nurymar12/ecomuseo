@@ -19,6 +19,7 @@ body {
 }
 
 .right-side {
+    background: url('../images/fondo.jpeg') no-repeat center center;
     position: relative;
     width: 50%;
     background-color: skyblue;
@@ -46,7 +47,9 @@ body {
     height: auto; /* Mantiene la proporción de la imagen */
     margin-bottom: 20px; /* Espacio entre la imagen y el título */
 }
-
+.google_logo_svg {
+    width: 50px;
+}
 
 .register-form {
     max-width: 300px;
@@ -94,7 +97,7 @@ body {
     width: 80%;
     margin: 5px;
     padding: 10px;
-    background-color: #008f68;
+    background-color: #315530;
     color: white;
     border: none;
     cursor: pointer;

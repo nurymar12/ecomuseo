@@ -1,0 +1,9 @@
+.logo-svg {
+    display: block; /* Hace que la imagen se pueda centrar */
+    width: 120px; /* Ajusta el ancho según el tamaño deseado */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+/*
+.div-profile{
+    border: transparent;
+} */

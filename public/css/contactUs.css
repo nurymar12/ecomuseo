@@ -1,0 +1,95 @@
+/* Estilos para la sección de contacto */
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-top: 2rem;
+  }
+
+  .contact-container h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .contact-container p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .contact-container form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-container label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-container input[type="text"],
+  .contact-container input[type="email"],
+  .contact-container textarea {
+    padding: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .contact-container textarea {
+    resize: vertical;
+  }
+
+  .contact-container button[type="submit"] {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .contact-container button[type="submit"]:hover {
+    background-color: #4cae4c;
+  }
+
+  /* Footer Styles */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  footer a {
+    color: #59e;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* Ajustes para iconos de redes sociales en el footer */
+  footer .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  footer .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  footer .social-icons i {
+    font-size: 1.5rem; /* Ajusta esto según el tamaño de tus íconos */
+  }

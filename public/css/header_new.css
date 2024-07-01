@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header-container {
+    background-color: #f5f5f5;
+    border-bottom: 4px solid #ccc;
+}
+
+.main-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo a {
+    color: #315530;
+    font-size: 24px;
+    text-decoration: none;
+    line-height: 1.2;
+}
+
+.nav-links a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.nav-links {
+    display: flex; /* Esto alinea los elementos de la navegación en una fila */
+    position: relative; /* Esto es necesario para posicionar el pseudo-elemento ::after correctamente */
+    margin-top: 20px;
+    padding-bottom: 15px;
+    /* otras propiedades */
+}
+
+.nav-links::after {
+    content: ''; /* Esto es necesario para generar el pseudo-elemento */
+    display: block; /* Esto hace que el pseudo-elemento sea un bloque, lo que le permite tener anchura y altura */
+    width: 100%; /* Esto hace que el pseudo-elemento tenga la misma anchura que .nav-links */
+    height: 4px; /* Esto es la altura de la línea verde */
+    background-color: #315530; /* Esto es el color de la línea verde */
+    position: absolute; /* Esto posiciona el pseudo-elemento en relación a .nav-links */
+    left: 0; /* Esto alinea el lado izquierdo del pseudo-elemento con el lado izquierdo de .nav-links */
+    bottom: 0; /* Esto coloca el pseudo-elemento en la parte inferior de .nav-links */
+}
+
+.nav-item {
+    display: inline-block; /* Esto permite que los elementos se coloquen uno al lado del otro */
+    background-color: transparent; /* color de fondo de cada elemento */
+    margin: 0 10px; /* Esto añade espacio entre los elementos */
+    padding: 10px 20px; /* Esto añade espacio dentro de los elementos */
+    color: white; /* color del texto */
+    text-decoration: none; /* elimina el subrayado de los enlaces */
+    transition: background-color 0.3s; /* animación suave para el cambio de color */
+}
+
+.nav-item:hover {
+    background-color: #315530; /* Esto cambia el color de fondo al pasar el mouse */
+    color:white;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+}
+
+.user-actions a {
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.intranet-btn{
+    background-color: #315530;
+    color: white;
+    border: 10px;
+    padding: 10px 20px;
+
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.login-btn{
+    background-color: #315530;
+    color: white;
+    border: 10px;
+    padding: 10px 20px;
+
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+/* .login-btn:hover{
+    color: white;
+    background-color: #315530;
+    text-transform: uppercase;
+} */
+
+.register-btn {
+    background-color: #315530;
+    color: white;
+    padding: 10px 20px;
+    border: 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+/* .register-btn:hover {
+    background-color: #315530;
+    color: white;
+} */
+
+.profile-btn{
+    background-color: #315530;
+    color: white;
+    border: 10px;
+    padding: 10px 20px;
+
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.logout-btn{
+    background-color: #60030c;
+    color: white;
+    border: 10px;
+    padding: 10px 20px;
+
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.logo-svg {
+    display: block; /* Hace que la imagen se pueda centrar */
+    width: 120px; /* Ajusta el ancho según el tamaño deseado */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+
+@media (max-width: 768px) {
+    .nav-links,
+    .user-actions {
+        display: none;
+    }
+
+    /* Aquí podrías incluir un menú hamburguesa o un menú desplegable para dispositivos móviles */
+}
