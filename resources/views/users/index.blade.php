@@ -11,11 +11,14 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Email</th>
-                <th scope="col">Rol</th>
-                <th scope="col">Acciones</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +26,9 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $user->name }}</td>
+                    <td>{{ $user->dni }}</td>
+                    <td>{{ $user->phone }}</td>
+                    <td>{{ $user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('d/m/Y') : 'N/A' }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
                         @forelse ($user->getRoleNames() as $role)
@@ -47,7 +53,7 @@
                                 @endcan
 
                                 @can('delete-user')
-                                    @if (Auth::user()->id!=$user->id)
+                                    @if (Auth::user()->id != $user->id)
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Quieres eliminar este usuario?');"><i class="bi bi-trash"></i> Eliminar</button>
                                     @endif
                                 @endcan
@@ -57,7 +63,7 @@
                     </td>
                 </tr>
                 @empty
-                    <td colspan="5">
+                    <td colspan="8">
                         <span class="text-danger">
                             <strong>No se encontraron usuarios</strong>
                         </span>
