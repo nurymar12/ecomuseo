@@ -27,4 +27,9 @@ class Donation extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function components()
+    {
+        return $this->belongsToMany(Components::class, 'component_donation')->withPivot('amount');
+    }
 }

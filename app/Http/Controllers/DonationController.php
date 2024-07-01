@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Donation;
+use App\Models\Components;
+use App\Models\ComponentDonation;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -33,7 +35,15 @@ class DonationController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('donations.show', compact('donations'));
+        $components = Components::all();
+
+        // Obtener los datos para la gráfica
+        $componentLabels = $components->pluck('titleComponente')->toArray();
+        $componentData = $components->map(function($component) {
+            return $component->donations->sum('pivot.amount');
+        })->toArray();
+
+        return view('donations.show', compact('donations', 'components', 'componentLabels', 'componentData'));
     }
 
     public function store(Request $request): RedirectResponse
@@ -97,14 +107,46 @@ class DonationController extends Controller
         return $pdf->stream('Reporte_donaciones_' . $startDate . '_' . $endDate . '.pdf');
     }
 
-    public function approve($id)
+    public function approve(Request $request, $id)
     {
         $donation = Donation::findOrFail($id);
+
+        if ($donation->type === 'dinero') {
+            $totalAmount = $donation->monto;
+            $assignedAmounts = $request->input('components');
+
+            // Verificar si $assignedAmounts es nulo o no es un array
+            if (is_null($assignedAmounts) || !is_array($assignedAmounts)) {
+                return back()->with('error', 'No se asignaron montos a los componentes.');
+            }
+
+            $sumAssignedAmounts = array_reduce($assignedAmounts, function($carry, $item) {
+                return $carry + $item['amount'];
+            }, 0);
+
+            if ($sumAssignedAmounts > $totalAmount) {
+                return back()->with('error', 'La suma de los montos asignados no puede superar el monto total de la donación.');
+            }
+
+            foreach ($assignedAmounts as $componentId => $amount) {
+                if ($amount['amount'] > 0) {
+                    ComponentDonation::create([
+                        'donation_id' => $donation->id,
+                        'components_id' => $componentId,
+                        'amount' => $amount['amount'],
+                    ]);
+                }
+            }
+        }
+
         $donation->update(['status' => 'approved', 'approved_date' => now()]);
+
         return back()->with('success', 'Donación aprobada con éxito.');
     }
 
-    public function decline($id)
+
+
+    public function decline($id): RedirectResponse
     {
         $donation = Donation::findOrFail($id);
         $donation->update(['status' => 'rejected']);
