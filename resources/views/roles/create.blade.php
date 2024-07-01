@@ -8,10 +8,10 @@
         <div class="card">
             <div class="card-header">
                 <div class="float-start">
-                    Add New Role
+                    Añadir Nuevo Rol
                 </div>
                 <div class="float-end">
-                    <a href="{{ route('roles.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                    <a href="{{ route('roles.index') }}" class="btn btn-primary btn-sm">&larr; Volver</a>
                 </div>
             </div>
             <div class="card-body">

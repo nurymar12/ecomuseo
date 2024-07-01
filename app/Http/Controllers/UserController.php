@@ -12,9 +12,10 @@ use Spatie\Permission\Models\Permission;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User; // Asegúrate de importar la clase User correctamente.
-
+use App\Models\Volunteer;
 
 class UserController extends Controller
 {
@@ -32,7 +33,7 @@ class UserController extends Controller
     public function index(): View
     {
         return view('users.index', [
-            'users' => User::latest('id')->paginate(3)
+            'users' => User::latest('id')->paginate(5)
         ]);
     }
 
@@ -54,17 +55,22 @@ class UserController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
 
+        // Asignar un valor predeterminado si 'dni' no está presente
+        if (!isset($input['dni'])) {
+            $input['dni'] = 'default_dni_value';
+
         $user = User::create($input);
         $user->assignRole($request->roles);
 
         return redirect()->route('users.index')
-                ->withSuccess('New user is added successfully.');
+                ->withSuccess('Nuevo usuario añadido correctamente.');
     }
+}
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user): View
+     public function show(User $user): View
     {
         return view('users.show', [
             'user' => $user
@@ -74,12 +80,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user): View
+     public function edit(User $user): View
     {
         // Check Only Super Admin can update his own Profile
         if ($user->hasRole('Admin')){
             if($user->id != auth()->user()->id){
-                abort(403, 'USER DOES NOT HAVE THE RIGHT PERMISSIONS');
+                abort(403, 'EL USUARIO NO TIENE LOS PERMISOS NECESARIOS');
             }
         }
 
@@ -107,8 +113,17 @@ class UserController extends Controller
 
         $user->syncRoles($request->roles);
 
+        // Verifica si el usuario tiene el rol "volunteer"
+        $volunteer = Volunteer::where('user_id', $user->id)->first();
+        if ($user->hasRole('Volunteer')&& $volunteer) {
+            $volunteer->update(['status' => 'active', 'approved_date' => now()]);
+        }
+        // else {
+        //     $volunteer->update(['status' => 'inactive', 'inactive_date' => now()]);
+        // }
+
         return redirect()->back()
-                ->withSuccess('User is updated successfully.');
+                ->withSuccess('El usuario ha sido actualizado correctamente');
     }
 
 
@@ -120,12 +135,12 @@ class UserController extends Controller
         // About if user is Super Admin or User ID belongs to Auth User
         if ($user->hasRole('Admin') || $user->id == auth()->user()->id)
         {
-            abort(403, 'USER DOES NOT HAVE THE RIGHT PERMISSIONS');
+            abort(403, 'EL USUARIO NO TIENE LOS PERMISOS NECESARIOS');
         }
 
         $user->syncRoles([]);
         $user->delete();
         return redirect()->route('users.index')
-                ->withSuccess('User is deleted successfully.');
+                ->withSuccess('El usuario ha sido eliminado correctamente');
     }
 }

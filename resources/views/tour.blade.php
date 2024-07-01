@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/tour.css') }}">
         <script src="{{ asset('js/welcome.js') }}"></script>
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-        <title>Ecomuseo LLAQTA AMARU -YOYEN KUWA</title>
+        <title>Ecomuseo LLAQTA AMARU -YOREN KUWAI</title>
 
     </head>
     <body>
@@ -17,7 +17,7 @@
 
         <!-- Sección de tours -->
         <section class="tours" id="tours">
-            <h1 class="titulo"><span>Nuestros Tours</span></h1>
+            <h1 class="titulo"><center><span>NUESTROS TOURS</span></h1></center>
             @auth
                 <div class="custom-button-container">
                     <a href="{{ route('visits.publicVisits') }}" class="custom-button">Mis Tours</a>
@@ -55,7 +55,7 @@
                             </div>
                             <!-- Contenedor del botón de reserva -->
                             <div class="reserve-button-container">
-                                <a class="reserve-button" data-tour-id="{{ $tour->id }}">Reservar Visita</a>
+                                <a class="reserve-button" data-tour-id="{{ $tour->id }}">Reservar Tour</a>
                             </div>
                         </div>
                     </div>
@@ -65,9 +65,9 @@
         </section>
 
 
-        <footer>
+        <!-- <footer>
             @include('partials.footer')
-        </footer>
+        </footer> -->
     </body>
 </html>
 

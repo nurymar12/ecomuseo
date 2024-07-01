@@ -34,7 +34,10 @@ class RoleAndPermissionSeeder extends Seeder
             'create-blog',
             'edit-blog',
             'delete-blog',
-            'approve_post'
+            'approve_post',
+            'create-donation',
+            'edit-donation',
+            'delete-donation',
          ];
 
           // Looping and Inserting Array's Permissions into Permission Table
@@ -90,7 +93,13 @@ class RoleAndPermissionSeeder extends Seeder
             'delete-component',
             'create-blog',
             'edit-blog',
-            'delete-blog'
+            'delete-blog',
+            'create-tour',
+            'edit-tour',
+            'delete-tour',
+            'create-donation',
+            'edit-donation',
+            'delete-donation',
         ]);
 
         // Permission::create(['name' => 'view-pages']);

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo_vectorizado.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/paymentInfo.css') }}">
-    <title>Medios de Pago | Ecomuseo LLAQTA AMARU - YOYEN KUWA</title>
+    <title>Medios de Pago | Ecomuseo LLAQTA AMARU - YOREN KUWAI</title>
 </head>
 <body>
 

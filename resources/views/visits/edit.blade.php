@@ -10,7 +10,7 @@
                     Edit Visit
                 </div>
                 <div class="float-end">
-                    <a href="{{ route('visits.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                    <a href="{{ route('visits.index') }}" class="btn btn-primary btn-sm">&larr; Volver</a>
                 </div>
             </div>
             <div class="card-body">
@@ -20,14 +20,14 @@
 
                     <!-- Mostrar el nombre del tour como texto plano -->
                     <div class="mb-3 row">
-                        <label class="col-md-4 col-form-label text-md-end text-start"><strong>Tour Name:</strong></label>
+                        <label class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre del Tour:</strong></label>
                         <div class="col-md-6">
                             <p class="form-control-plaintext">{{ $visit->tour->name }}</p>
                         </div>
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="number_of_people" class="col-md-4 col-form-label text-md-end text-start">Number of People</label>
+                        <label for="number_of_people" class="col-md-4 col-form-label text-md-end text-start">Capacidad Máxima</label>
                         <div class="col-md-6">
                             <input type="number" class="form-control @error('number_of_people') is-invalid @enderror" id="number_of_people" name="number_of_people" value="{{ $visit->number_of_people }}">
                             @error('number_of_people')
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="additional_info" class="col-md-4 col-form-label text-md-end text-start">Additional Info</label>
+                        <label for="additional_info" class="col-md-4 col-form-label text-md-end text-start">Información Adicional</label>
                         <div class="col-md-6">
                             <textarea class="form-control @error('additional_info') is-invalid @enderror" id="additional_info" name="additional_info">{{ $visit->additional_info }}</textarea>
                             @error('additional_info')
@@ -47,11 +47,11 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="status" class="col-md-4 col-form-label text-md-end text-start">Status</label>
+                        <label for="status" class="col-md-4 col-form-label text-md-end text-start">Estado</label>
                         <div class="col-md-6">
-                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status"> <option value="pending" {{ $visit->status == 'pending' ? 'selected' : '' }}>Pending</option> <option value="approved" {{ $visit->status == 'approved' ? 'selected' : '' }}>Approved</option> <option value="rejected" {{ $visit->status == 'rejected' ? 'selected' : '' }}>Rejected</option> </select> @error('status') <span class="text-danger">{{ $message }}</span> @enderror </div> </div>
+                            <select class="form-control @error('status') is-invalid @enderror" id="status" name="status"> <option value="pending" {{ $visit->status == 'pending' ? 'selected' : '' }}>Pediente</option> <option value="approved" {{ $visit->status == 'approved' ? 'selected' : '' }}>Aprobado</option> <option value="rejected" {{ $visit->status == 'rejected' ? 'selected' : '' }}>Rechazado</option> </select> @error('status') <span class="text-danger">{{ $message }}</span> @enderror </div> </div>
                                             <div class="mb-3 row">
-                    <label for="requested_date" class="col-md-4 col-form-label text-md-end text-start">Requested Date</label>
+                    <label for="requested_date" class="col-md-4 col-form-label text-md-end text-start">Fecha de Solicitud</label>
                     <div class="col-md-6">
                         <input type="date" class="form-control @error('requested_date') is-invalid @enderror" id="requested_date" name="requested_date" value="{{ $visit->requested_date }}">
                         @error('requested_date')
@@ -63,7 +63,7 @@
                 <!-- Mostrar la fecha de aprobación como texto plano si existe -->
                 @if($visit->approved_date)
                 <div class="mb-3 row">
-                    <label class="col-md-4 col-form-label text-md-end text-start"><strong>Approved Date:</strong></label>
+                    <label class="col-md-4 col-form-label text-md-end text-start"><strong>Fecha Aprobada:</strong></label>
                     <div class="col-md-6">
                         <p class="form-control-plaintext">{{ $visit->approved_date}}</p>
                     </div>
@@ -71,7 +71,7 @@
                 @endif
 
                 <div class="mb-3 row">
-                    <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update">
+                    <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Actualizar">
                 </div>
             </form>
         </div>

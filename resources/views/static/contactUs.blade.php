@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/contactUs.css') }}">
     <script src="{{ asset('js/welcome.js') }}"></script>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-    <title>Ecomuseo LLAQTA AMARU -YOYEN KUWA</title>
+    <title>Ecomuseo LLAQTA AMARU -YOREN KUWAI</title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 <main>
     <section class="contact-container">
         <h1>Contactanos</h1>
-        <p>Si tienes alguna pregunta, no dudes en enviarnos un mensaje.</p>
+        <p>Si tienes alguna pregunta, no dudes en enviarnos un mensaje</p>
         <form action="/send-message" method="post">
             @csrf
             <div class="form-group">
@@ -42,9 +42,9 @@
     </section>
 </main>
 
-<footer>
+<!-- <footer>
     @include('partials.footer')
-</footer>
+</footer> -->
 
 </body>
 </html>

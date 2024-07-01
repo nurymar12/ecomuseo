@@ -5,20 +5,20 @@
 @section('content')
 
 <div class="card">
-    <div class="card-header">Visits List</div>
+    <div class="card-header">Lista de Visitas</div>
     <div class="card-body">
         <table id="table">
             <thead>
                 <tr>
-                    <th scope="col">S#</th>
-                    <th scope="col">User</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col">Tour</th>
-                    <th scope="col">Number of People</th>
-                    <th scope="col">Additional info</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Requested Date</th>
-                    <th scope="col">Approved Date</th>
-                    <th scope="col" style="width: 250px;">Action</th>
+                    <th scope="col">Número de Personas</th>
+                    <th scope="col">Información Adicional</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha de Solicitud</th>
+                    <th scope="col">Fecha de Aprobación</th>
+                    <th scope="col" style="width: 250px;">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,9 +40,9 @@
                         {{-- <form action="{{ route('visits.destroy', $visit->id) }}" method="post"> --}}
 
                             <a href="{{ route('visits.show', $visit->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
-                            @can('edit-visit')
+                            <!-- @can('edit-visit')
                             <a href="{{ route('visits.edit', $visit->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
-                            @endcan
+                            @endcan -->
 {{--
                             @can('delete-tour')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this tour?');"><i class="bi bi-trash"></i> Delete</button>
@@ -55,7 +55,7 @@
                 @empty
                     <td colspan="8">
                         <span class="text-danger">
-                            <strong>No Visits Found!</strong>
+                            <strong>No se encuentran visitas</strong>
                         </span>
                     </td>
                 @endforelse

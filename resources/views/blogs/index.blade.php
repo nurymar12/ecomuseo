@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
-
-
 <!-- Vista index de blogs -->
 @extends('layouts.app_new')
 

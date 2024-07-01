@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/my_visits.css') }}">
         <script src="{{ asset('js/welcome.js') }}"></script>
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-        <title>Mis Visitas | Ecomuseo LLAQTA AMARU - YOYEN KUWA</title>
+        <title>Mis Visitas | Ecomuseo LLAQTA AMARU - YOREN KUWAI</title>
 
     </head>
     <body>
@@ -50,8 +50,8 @@
             @endforeach
         </div>
 
-        <footer>
+        <!-- <footer>
             @include('partials.footer')
         </footer>
-    </body>
+    </body> -->
 </html>

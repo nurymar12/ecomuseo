@@ -14,9 +14,10 @@
                 <img src="{{ asset('images/logo_vectorizado.svg') }}" alt="Logo" class="logo-svg">
                 <div class="nav-links">
                     <a href="/" class="nav-item">Inicio</a>
-                    <a href="/tour" class="nav-item">Tour</a>
-                    <a href="/blog" class="nav-item">Blog</a>
-                    <a href="/static/paymentsInfo" class="nav-item">Donar</a>
+                    <a href="/tour" class="nav-item">Tours</a>
+                    <a href="/blog" class="nav-item">Blogs</a>
+                    <a href="/donations" class="nav-item">Donar</a>
+                    <a href="/volunteers" class="nav-item">Voluntariado</a>
                 </div>
                 <div class="user-actions" id="auth-buttons">
                     @if (Route::has('login'))
@@ -48,7 +49,7 @@
 
 
                             @else
-                                <a href="{{ route('login') }}" class="login-btn">Inicar sesión</a>
+                                <a href="{{ route('login') }}" class="login-btn">Iniciar sesión</a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="register-btn">Registrarse</a>
                                 @endif

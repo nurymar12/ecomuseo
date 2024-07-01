@@ -18,6 +18,9 @@ class AdminUserSeeder extends Seeder
 
         $superAdmin = User::create([
             'name' => 'admin',
+            'dni' => '12345678',
+            'phone' => '123456789',
+            'birthdate' => '1990-01-01',
             'email' => 'admin@admin.com',
             'password' => Hash::make('12345678')
         ]);
@@ -25,6 +28,9 @@ class AdminUserSeeder extends Seeder
 
         $visitor = User::create([
             'name' => 'no_admin',
+            'dni' => '23456789',
+            'phone' => '123456789',
+            'birthdate' => '1990-01-01',
             'email' => 'no-admin@no-admin.com',
             'password' => Hash::make('12345678')
         ]);
@@ -32,6 +38,9 @@ class AdminUserSeeder extends Seeder
 
         $volunteer = User::create([
             'name' => 'voluntario',
+            'dni' => '87965472',
+            'phone' => '123456789',
+            'birthdate' => '1990-01-01',
             'email' => 'voluntario@voluntario.com',
             'password' => Hash::make('12345678')
         ]);

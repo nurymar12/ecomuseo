@@ -10,7 +10,6 @@
     <title>Intranet Ecomuseo</title>
 
     <!-- Fonts -->
-
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -56,12 +55,12 @@
                                 </li>
                             @endif
                         @else
-                            @canany(['create-role', 'edit-role', 'delete-role'])
+                            <!-- @canany(['create-role', 'edit-role', 'delete-role'])
                                 <li><a class="nav-link" href="{{ route('roles.index') }}">Gestionar Roles</a></li>
                             @endcanany
                             @canany(['create-user', 'edit-user', 'delete-user'])
                                 <li><a class="nav-link" href="{{ route('users.index') }}">gestionar Usuarios</a></li>
-                            @endcanany
+                            @endcanany -->
                             {{-- @canany(['create-product', 'edit-product', 'delete-product'])
                                 <li><a class="nav-link" href="{{ route('products.index') }}">Manage Products</a></li>
                             @endcanany --}}

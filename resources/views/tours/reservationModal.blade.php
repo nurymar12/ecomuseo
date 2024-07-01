@@ -12,7 +12,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="reservationModalLabel">Reserva de Visita</h5>
+          <h5 class="modal-title" id="reservationModalLabel">Reservar Tour</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -25,8 +25,8 @@
             <div class="form-group">
               <label for="number_of_people">Número de personas:</label>
               <input type="number" class="form-control" id="number_of_people" name="number_of_people" required>
-              <label for="additional_info">Información de contacto:</label>
-              <textarea class="form-control" id="additional_info" name="additional_info" placeholder="Información de contacto" rows="3" required></textarea>
+              <label for="additional_info">Número de contacto:</label>
+              <textarea class="form-control" id="additional_info" name="additional_info" placeholder="N° de Celular" rows="3" required></textarea>
             </div>
 
           </div>

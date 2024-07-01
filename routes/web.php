@@ -16,18 +16,9 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\VisitController;
 use App\Http\Controllers\BlogController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
+use App\Http\Controllers\DonationController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\VolunteerController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
@@ -89,7 +80,9 @@ Route::resources([
     'tours' => TourController::class,
     'visits' => VisitController::class,
     'blogs' => BlogController::class,
-
+    'donations' => DonationController::class,
+    'tasks' => TaskController::class,
+    'volunteers' => VolunteerController::class,
 ]);
 
 Route::get('/components/public/{id}', [ComponentsController::class, 'publicShow'])->name('components.publicShow');
@@ -110,16 +103,29 @@ Route::get('blog/{id}', [BlogController::class, 'publicShow'])->name('blogs.publ
 Route::post('/blogs/{blog}/approve', [BlogController::class, 'approve'])->name('blogs.approve');
 Route::post('/blogs/{blog}/decline', [BlogController::class, 'decline'])->name('blogs.decline');
 
+Route::get('/donations/manage', [DonationController::class, 'show'])->name('donations.show');
 
+Route::post('/donations/{donation}/approve', [DonationController::class, 'approve'])->name('donations.approve');
+Route::post('/donations/{donation}/decline', [DonationController::class, 'decline'])->name('donations.decline');
+Route::post('/donations/export', [DonationController::class, 'export'])->name('donations.export');
 
-// Asegúrate de que la ruta apunte a la vista dentro de la subcarpeta 'static'
-// Route::get('/static/contactUs', function () {
+Route::post('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
+Route::post('/tasks/export', [TaskController::class, 'export'])->name('tasks.export');
+/* Route::post('/tasks/{task}/decline', [TaskController::class, 'decline'])->name('tasks.decline'); */
+
+Route::get('/volunteers/manage', [VolunteerController::class, 'show'])->name('volunteers.show');
+
+/* Route::post('/volunteers/{volunteer}/approve', [VolunteerController::class, 'approve'])->name('volunteers.approve');
+Route::post('/volunteers/{volunteer}/decline', [VolunteerController::class, 'decline'])->name('volunteers.decline'); */
+
+//Asegúrate de que la ruta apunte a la vista dentro de la subcarpeta 'static'
+// Route::get('/contactus', function () {
 //     return view('static.contactUs');
-// });
+// })->name('contactus');
 
-Route::get('/static/paymentsInfo', function () {
+/* Route::get('/static/paymentsInfo', function () {
     return view('static.paymentInfo');
-});
+}); */
 
 
 require __DIR__.'/auth.php';
