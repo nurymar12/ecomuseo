@@ -8,6 +8,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class VolunteerController extends Controller
 {
@@ -18,7 +19,14 @@ class VolunteerController extends Controller
 
     public function index(): View
     {
-        return view('volunteers.index');
+        $user = Auth::user();
+        $existingRequest = null;
+
+        if ($user) {
+            $existingRequest = Volunteer::where('user_id', $user->id)->first();
+        }
+
+        return view('volunteers.index', compact('existingRequest'));
     }
 
     public function show(): View
