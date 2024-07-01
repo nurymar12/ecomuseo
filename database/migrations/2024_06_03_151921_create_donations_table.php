@@ -23,8 +23,10 @@ return new class extends Migration
             $table->date('requested_date');
             $table->date('approved_date')->nullable();
             $table->text('additional_info')->nullable();
+            $table->decimal('monto', 10, 2)->nullable(); // Asegúrate de que este campo esté aquí
             $table->timestamps();
         });
+
     }
 
     /**

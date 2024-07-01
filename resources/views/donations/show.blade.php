@@ -29,7 +29,7 @@
                 @endif
             </div>
             <br />
-            <table class="table table-striped table-bordered">
+            <table id="table">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -39,15 +39,16 @@
                     <th scope="col">Fecha Aprobación</th>
                     <th scope= "col">Razón Social</th>
                     <th scope= "col">Contacto</th>
-                    <th scope="col">Telefono</th>
+                    <th scope="col">Teléfono</th>
                     <th scope="col">Email</th>
                     <th scope="col">Info</th>
+                    <th scope="col">Monto</th>
                     <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($donations as $donation)
-                    <tr>
+                    <tr class="{{ $donation->status }}">
                         <th scope="row">{{ $loop->iteration }}</th>
                         <td>{{ $donation->type }}</td>
                         <td>{{ ucfirst($donation->status) }}</td>
@@ -58,27 +59,16 @@
                         <td>{{ $donation->celular_contacto }}</td>
                         <td>{{ $donation->email_contacto }}</td>
                         <td>{{ $donation->additional_info }}</td>
+                        <td>{{ $donation->type == 'dinero' ? $donation->monto : 'N/A' }}</td>
                         <td>
                             <!-- Botón para aprobar -->
                             <button type="button" class="btn btn-sm btn-success bi-check-lg approve-btn" data-id="{{ $donation->id }}" data-toggle="tooltip" data-placement="top" title="Aprobar"></button>
                             <!-- Botón para declinar -->
                             <button type="button" class="btn btn-sm btn-danger bi-x-lg decline-btn" data-id="{{ $donation->id }}" data-toggle="tooltip" data-placement="top" title="Rechazar"></button>
-                            {{-- <form action="{{ route('donations.destroy', $donation->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-
-                                @can('edit-donation')
-                                    <a href="{{ route('donations.edit', $donation->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
-                                @endcan
-
-                                @can('delete-donation')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this donation?');"><i class="bi bi-trash"></i> Delete</button>
-                                @endcan
-                            </form> --}}
                         </td>
                     </tr>
                     @empty
-                        <td colspan="6">
+                        <td colspan="11">
                             <span class="text-danger">
                                 <strong>No Donations Found!</strong>
                             </span>
@@ -115,8 +105,6 @@
         }
     }
 </script>
-
-
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 <!-- Daterangepicker -->
@@ -184,7 +172,7 @@
             e.preventDefault();
             var donationId = $(this).data('id');
             $.post('{{ url('/donations') }}/' + donationId + '/decline', {
-                _token: $('meta[name="csrf-token"]').attr('content'),
+                _token: $('meta[name="csrf-token)').attr('content'),
             }, function(response) {
                 window.location.reload();
             });

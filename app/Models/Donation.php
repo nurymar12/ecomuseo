@@ -20,6 +20,7 @@ class Donation extends Model
         'requested_date',
         'approved_date',
         'additional_info',
+        'monto'
     ];
 
     public function user()

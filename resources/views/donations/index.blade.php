@@ -41,6 +41,12 @@
                     </x-select>
                     <x-input-error :messages="$errors->get('type')" class="mt-2" />
                 </div>
+                <!-- Monto -->
+                <div id="monto-container" class="mt-4" style="display: none;">
+                    <x-input-label for="monto" :value="__('Monto')" />
+                    <x-text-input id="monto" class="block mt-1 w-full" type="number" step="0.01" name="monto" placeholder="Monto de la donación"/>
+                    <x-input-error :messages="$errors->get('monto')" class="mt-2" />
+                </div>
                 <!-- Razon Social -->
                 <div class="mt-4">
                     <x-input-label for="razon_social" :value="__('Razón Social')" />
@@ -105,6 +111,19 @@
 <footer>
     @include('partials.footer')
 </footer>
+
+<script>
+    document.getElementById('type').addEventListener('change', function () {
+        var montoContainer = document.getElementById('monto-container');
+        if (this.value === 'dinero') {
+            montoContainer.style.display = 'block';
+            document.getElementById('monto').setAttribute('required', 'required');
+        } else {
+            montoContainer.style.display = 'none';
+            document.getElementById('monto').removeAttribute('required');
+        }
+    });
+</script>
 
 </body>
 </html>
