@@ -50,26 +50,28 @@
                 <!-- Razon Social -->
                 <div class="mt-4">
                     <x-input-label for="razon_social" :value="__('Razón Social')" />
-                    <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social"  placeholder="Nombre de Empresa o Institución"/>
+                    <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social" placeholder="Nombre de Empresa o Institución"/>
                     <x-input-error :messages="$errors->get('razon_social')" class="mt-2" />
                 </div>
                 <!-- Persona Contacto -->
                 <div class="mt-4">
                     <x-input-label for="persona_contacto" :value="__('Persona de Contacto')" />
-                    <x-text-input id="persona_contacto" class="block mt-1 w-full" type="text" name="persona_contacto"  placeholder="Nombre de persona de contacto"/>
+                    <x-text-input id="persona_contacto" class="block mt-1 w-full" type="text" name="persona_contacto" placeholder="Nombre de persona de contacto"
+                        value="{{ Auth::check() ? Auth::user()->name : '' }}"/>
                     <x-input-error :messages="$errors->get('persona_contacto')" class="mt-2" />
                 </div>
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-input-label for="email_contacto" :value="__('Correo electrónico')" />
                     <x-text-input id="email_contacto" class="block mt-1 w-full" type="email" name="email_contacto"
-                        :value="old('email_contacto')" required autocomplete="username"  placeholder="Correo electrónico"/>
+                        value="{{ Auth::check() ? Auth::user()->email : old('email_contacto') }}" required autocomplete="username" placeholder="Correo electrónico"/>
                     <x-input-error :messages="$errors->get('email_contacto')" class="mt-2" />
                 </div>
                 <!-- Telefono -->
                 <div class="mt-4">
                     <x-input-label for="celular_contacto" :value="__('Celular/Telefono')" />
-                    <x-text-input id="celular_contacto" class="block mt-1 w-full" type="text" name="celular_contacto"  placeholder="Celular/Telefono de contacto"/>
+                    <x-text-input id="celular_contacto" class="block mt-1 w-full" type="text" name="celular_contacto"
+                        value="{{ Auth::check() ? Auth::user()->phone : old('celular_contacto') }}" placeholder="Celular/Telefono de contacto"/>
                     <x-input-error :messages="$errors->get('celular_contacto')" class="mt-2" />
                 </div>
                 <!-- Info Adicional -->

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Donation;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class DonationController extends Controller
 {
@@ -62,7 +62,6 @@ class DonationController extends Controller
 
         return redirect()->route('donations.index')->with('success', 'Solicitud procesada con éxito. Nos pondremos en contacto contigo pronto.');
     }
-
 
     public function export(Request $request): Response
     {
