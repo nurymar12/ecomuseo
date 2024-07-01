@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Volunteer;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class VolunteerController extends Controller
 {
@@ -16,14 +19,20 @@ class VolunteerController extends Controller
 
     public function index(): View
     {
-        return view('volunteers.index');
+        $user = Auth::user();
+        $existingRequest = null;
+
+        if ($user) {
+            $existingRequest = Volunteer::where('user_id', $user->id)->first();
+        }
+
+        return view('volunteers.index', compact('existingRequest'));
     }
 
     public function show(): View
     {
         $volunteers = Volunteer::with(['user'])
-            ->where('status', '!=', 'inactive')
-            ->orderByRaw("FIELD(status, 'approved') DESC")
+            ->orderByRaw("FIELD(status, 'active', 'pending', 'inactive') ASC")
             ->orderBy('requested_date', 'desc')
             ->latest()
             ->paginate(10);
@@ -60,23 +69,38 @@ class VolunteerController extends Controller
             return redirect()->route('volunteers.index')->with('error', 'Debe proporcionar un CV en PDF.');
         }
     }
-    /* public function approve($id): RedirectResponse
+
+    public function approve($id): RedirectResponse
     {
         $volunteer = Volunteer::findOrFail($id);
-        $volunteer->update(['status' => 'approved', 'approved_date' => now()]);
-        return back()->with('success', 'Volunteer approved successfully.');
+        $volunteer->status = 'active';
+        $volunteer->approved_date = now();
+        $volunteer->save();
+
+        $user = $volunteer->user;
+        $user->assignRole('Volunteer');
+
+        return redirect()->route('volunteers.show')->with('success', 'Voluntario aprobado con éxito.');
     }
 
     public function decline($id): RedirectResponse
     {
         $volunteer = Volunteer::findOrFail($id);
-        $volunteer->update(['status' => 'rejected']);
-        return back()->with('success', 'Volunteer rejected successfully.');
+        $volunteer->status = 'inactive';
+        $volunteer->inactive_date = now();
+        $volunteer->save();
+
+        $user = $volunteer->user;
+        $user->removeRole('Volunteer');
+
+        return redirect()->route('volunteers.show')->with('success', 'Voluntario rechazado con éxito.');
     }
 
-    public function destroy(Volunteer $volunteer): RedirectResponse
+    public function destroy($id): RedirectResponse
     {
-        $volunteer->update(['status' => 'inactive', 'inactive_date' => now()]);
-        return back()->with('success', 'Volunteer inactive.');
-    } */
+        $volunteer = Volunteer::findOrFail($id);
+        $volunteer->delete();
+
+        return redirect()->route('volunteers.show')->with('success', 'Solicitud de voluntariado eliminada con éxito.');
+    }
 }

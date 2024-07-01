@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/visits.css') }}">
+<link rel="stylesheet" href="{{ asset('css/volunteer.css') }}">
 
 @extends('layouts.app_new')
 
@@ -7,27 +7,24 @@
     <div class="card-header">Lista de Voluntarios</div>
     <div class="card-body">
 
-        <table class="table table-striped table-bordered table-responsive">
+        <table id="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">DNI</th>
-                <th scope="col">Email</th>
-                <th scope="col">Fono</th>
-                <th scope="col">Fecha Nacimiento</th>
-                <th scope="col">CV</th>
-                <th scope="col">Info</th>
-                {{-- <th scope="col">Fecha Registro</th>
-                <th scope="col">Fecha Aprobación</th>
-                <th scope="col">Fecha Inactivo</th> --}}
-                {{-- <th scope="col">Acciones</th> --}}
+                    <th scope="col">#</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Fono</th>
+                    <th scope="col">Fecha Nacimiento</th>
+                    <th scope="col">CV</th>
+                    <th scope="col">Info</th>
+                    <th scope="col" style="width: 250px;">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($volunteers as $volunteer)
-                <tr>
+                <tr class="{{ $volunteer->status }}">
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ ucfirst($volunteer->status) }}</td>
                     <td>{{ $volunteer->user->name }}</td>
@@ -37,26 +34,27 @@
                     <td>{{ \Carbon\Carbon::parse($volunteer->user->birthdate)->format('d/m/Y') }}</td>
                     <td><a href="{{ asset('storage/'.$volunteer->cv_path) }}" download class="btn btn-sm btn-secondary"><i class="bi bi-download"></i></a></td>
                     <td>{{ $volunteer->additional_info }}</td>
-                    {{-- <td>{{ $volunteer->requested_date }}</td>
-                    <td>{{ $volunteer->approved_date ? $volunteer->approved_date : 'N/A' }}</td>
-                    <td>{{ $volunteer->inactive_date ? $volunteer->inactive_date : 'N/A' }}</td> --}}
-                    {{-- <td>
-                        <!-- Botón para aprobar -->
-                        <button type="button" class="btn btn-sm btn-success bi-check-lg approve-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Aprobar"></button>
-                        <!-- Botón para declinar -->
-                        <button type="button" class="btn btn-sm btn-danger bi-x-lg decline-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Rechazar"></button>
-                        <form action="{{ route('volunteers.destroy', $volunteer->id) }}" method="post">
+                    <td>
+                        @if ($volunteer->status == 'pending')
+                            <button type="button" class="btn btn-sm btn-success bi-check-lg approve-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Aprobar"></button>
+                            <button type="button" class="btn btn-sm btn-danger bi-x-lg decline-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Rechazar"></button>
+                        @endif
+                        @if ($volunteer->status == 'active')
+                            <button type="button" class="btn btn-sm btn-danger bi-x-lg decline-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Rechazar"></button>
+                        @endif
+                        @if ($volunteer->status == 'inactive')
+                            <button type="button" class="btn btn-sm btn-success bi-check-lg approve-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Aprobar"></button>
+                        @endif
+                        <!-- Botón de eliminación -->
+                        <form method="POST" action="{{ route('volunteers.destroy', $volunteer->id) }}" style="display:inline;">
                             @csrf
                             @method('DELETE')
-
-                            @can('delete-volunteer')
-                                <button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Inactivar" onclick="return confirm('Dar de baja al Voluntario?');"><i class="bi bi-trash"></i></button>
-                            @endcan
+                            <button type="submit" class="btn btn-sm btn-danger bi-trash" onclick="return confirm('¿Está seguro de que desea eliminar esta solicitud de voluntariado?');" data-toggle="tooltip" data-placement="top" title="Eliminar"></button>
                         </form>
-                    </td> --}}
+                    </td>
                 </tr>
                 @empty
-                    <td colspan="6">
+                    <td colspan="10">
                         <span class="text-danger">
                             <strong>No Volunteers Found!</strong>
                         </span>
@@ -93,8 +91,6 @@
     }
 </script>
 
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
@@ -106,6 +102,12 @@
                 _token: $('meta[name="csrf-token"]').attr('content'),
             }, function(response) {
                 window.location.reload();
+            }).fail(function(xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al aprobar el voluntario.',
+                });
             });
         });
 
@@ -116,6 +118,12 @@
                 _token: $('meta[name="csrf-token"]').attr('content'),
             }, function(response) {
                 window.location.reload();
+            }).fail(function(xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un problema al rechazar el voluntario.',
+                });
             });
         });
     });

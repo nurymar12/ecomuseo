@@ -1,0 +1,134 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.payment-info-container {
+    width: 50%;
+    position: relative;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    border-radius: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.payment-info-container h1, .payment-info-container h2 {
+    color: #27ae60;
+}
+
+.account-info, .qr-codes {
+    margin-bottom: 20px;
+}
+
+.qr-code {
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.qr-code img {
+    /* width: 160px; */
+    height: 300px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Estilo para las etiquetas */
+.payment-info-container label {
+    display: block;
+    margin-top: .5rem;
+    color: #333;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+/* Estilo para los inputs */
+.payment-info-container input {
+    border: none;
+    border-bottom: 3px solid green;
+    padding: 5px 0;
+    outline: none;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.payment-info-container select {
+    border: none;
+    border-bottom: 3px solid green;
+    padding: 5px 0;
+    outline: none;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.payment-info-container textarea {
+    border: none;
+    border-bottom: 3px solid green;
+    padding: 5px 0;
+    outline: none;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+.payment-info-container select:focus {
+    border: none;
+    border-bottom: 3px solid green;
+}
+
+.payment-info-container input:focus {
+    border: none;
+    border-bottom: 3px solid green;
+}
+.payment-info-container .payment-info-container-section {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+
+}
+.payment-info-container a {
+    justify-content: center;
+    display: flex;
+    padding: 3px;
+}
+.payment-info-container .ms-4 {
+    justify-content: center;
+    display: flex;
+    width: 80%;
+    margin: 5px;
+    padding: 10px;
+    background-color: #315530;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.payment-info-container button:hover {
+    background-color: #007f5f;
+}
+
+/* Estilo para el mensaje de éxito */
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Estilo para el mensaje de error */
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+}
+

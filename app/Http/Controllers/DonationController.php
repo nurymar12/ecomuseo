@@ -17,11 +17,7 @@ class DonationController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']); //,'store'
-        /* $this->middleware('permission:edit-donation|delete-donation', ['only' => ['index','show']]);
-        $this->middleware('permission:create-donation', ['only' => ['create','store']]);
-        $this->middleware('permission:edit-donation', ['only' => ['edit','update']]);
-        $this->middleware('permission:delete-donation', ['only' => ['destroy']]); */
+        $this->middleware('auth')->except(['index']);
     }
 
     public function index(): View
@@ -38,8 +34,8 @@ class DonationController extends Controller
             ->paginate(10);
 
         return view('donations.show', compact('donations'));
-        //return view('donations.show');
     }
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -49,6 +45,7 @@ class DonationController extends Controller
             'email_contacto' => ['required', 'string', 'lowercase', 'email', 'max:255'],
             'celular_contacto' => ['required', 'regex:/^(9)[0-9]{8}$/'],
             'info_adicional' => ['string', 'max:255'],
+            'monto' => ['required_if:type,dinero', 'numeric', 'min:0'], // Validación para el monto
         ]);
 
         $donation = Donation::create([
@@ -60,13 +57,14 @@ class DonationController extends Controller
             'email_contacto' => $request->email_contacto,
             'requested_date' => now(),
             'additional_info' => $request->info_adicional,
+            'monto' => $request->type === 'dinero' ? $request->monto : null, // Aquí es donde se asigna el monto
         ]);
 
-        if(!$donation){
+        if (!$donation) {
             return redirect()->route('donations.index')->with('error', 'No se pudo procesar su solicitud. Por favor, intente de nuevo.');
         }
 
-        return redirect()->route('donations.index')->with('success', 'Solicitud procesada con éxito. Nos pondemos en contacto contigo pronto.');
+        return redirect()->route('donations.index')->with('success', 'Solicitud procesada con éxito. Nos pondremos en contacto contigo pronto.');
     }
 
     public function export(Request $request): Response
@@ -97,20 +95,19 @@ class DonationController extends Controller
             $canvas->text($pageWidth - $width - 20, $pageHeight - 20, $text, $font, $size);
         });
         return $pdf->stream('Reporte_donaciones_' . $startDate . '_' . $endDate . '.pdf');
-        //return view('donations.export', $data);
     }
+
     public function approve($id)
     {
         $donation = Donation::findOrFail($id);
         $donation->update(['status' => 'approved', 'approved_date' => now()]);
-        return back()->with('success', 'Donation approved successfully.');
+        return back()->with('success', 'Donación aprobada con éxito.');
     }
 
     public function decline($id)
     {
         $donation = Donation::findOrFail($id);
-
         $donation->update(['status' => 'rejected']);
-        return back()->with('success', 'Donation declined.');
+        return back()->with('success', 'Donación rechazada.');
     }
 }

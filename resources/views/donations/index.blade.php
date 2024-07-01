@@ -4,8 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/logo_vectorizado.svg') }}">
-    <link rel="stylesheet" href="{{ asset('css/paymentInfo.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/donation.css') }}">
     <title>Donaciones | Ecomuseo LLAQTA AMARU - YOYEN KUWA</title>
+    <style>
+        .text-danger {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -36,41 +41,49 @@
                 <div>
                     <x-input-label for="type" :value="__('Tipo de donación')" />
                     <x-select name="type" id="type" class="block mt-1 w-full">
-                        <option value="material" selected>Donación de Materiales varios</option>
-                        <option value="dinero">Donación de Dinero</option>
+                        <option value="material" {{ old('type') == 'material' ? 'selected' : '' }}>Donación de Materiales varios</option>
+                        <option value="dinero" {{ old('type') == 'dinero' ? 'selected' : '' }}>Donación de Dinero</option>
                     </x-select>
-                    <x-input-error :messages="$errors->get('type')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('type')" class="mt-2 text-danger" />
+                </div>
+                <!-- Monto -->
+                <div id="monto-container" class="mt-4" style="{{ old('type') == 'dinero' ? '' : 'display: none;' }}">
+                    <x-input-label for="monto" :value="__('Monto')" />
+                    <x-text-input id="monto" class="block mt-1 w-full" type="number" step="0.01" name="monto" value="{{ old('monto') }}" placeholder="Monto de la donación"/>
+                    <x-input-error :messages="$errors->get('monto')" class="mt-2 text-danger" />
                 </div>
                 <!-- Razon Social -->
                 <div class="mt-4">
                     <x-input-label for="razon_social" :value="__('Razón Social')" />
-                    <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social"  placeholder="Nombre de Empresa o Institución"/>
-                    <x-input-error :messages="$errors->get('razon_social')" class="mt-2" />
+                    <x-text-input id="razon_social" class="block mt-1 w-full" type="text" name="razon_social" value="{{ old('razon_social') }}" placeholder="Nombre de Empresa o Institución"/>
+                    <x-input-error :messages="$errors->get('razon_social')" class="mt-2 text-danger" />
                 </div>
                 <!-- Persona Contacto -->
                 <div class="mt-4">
                     <x-input-label for="persona_contacto" :value="__('Persona de Contacto')" />
-                    <x-text-input id="persona_contacto" class="block mt-1 w-full" type="text" name="persona_contacto"  placeholder="Nombre de persona de contacto"/>
-                    <x-input-error :messages="$errors->get('persona_contacto')" class="mt-2" />
+                    <x-text-input id="persona_contacto" class="block mt-1 w-full" type="text" name="persona_contacto" placeholder="Nombre de persona de contacto"
+                        value="{{ old('persona_contacto', Auth::check() ? Auth::user()->name : '') }}"/>
+                    <x-input-error :messages="$errors->get('persona_contacto')" class="mt-2 text-danger" />
                 </div>
                 <!-- Email Address -->
                 <div class="mt-4">
                     <x-input-label for="email_contacto" :value="__('Correo electrónico')" />
                     <x-text-input id="email_contacto" class="block mt-1 w-full" type="email" name="email_contacto"
-                        :value="old('email_contacto')" required autocomplete="username"  placeholder="Correo electrónico"/>
-                    <x-input-error :messages="$errors->get('email_contacto')" class="mt-2" />
+                        value="{{ old('email_contacto', Auth::check() ? Auth::user()->email : '') }}" required autocomplete="username" placeholder="Correo electrónico"/>
+                    <x-input-error :messages="$errors->get('email_contacto')" class="mt-2 text-danger" />
                 </div>
                 <!-- Telefono -->
                 <div class="mt-4">
                     <x-input-label for="celular_contacto" :value="__('Celular/Telefono')" />
-                    <x-text-input id="celular_contacto" class="block mt-1 w-full" type="text" name="celular_contacto"  placeholder="Celular/Telefono de contacto"/>
-                    <x-input-error :messages="$errors->get('celular_contacto')" class="mt-2" />
+                    <x-text-input id="celular_contacto" class="block mt-1 w-full" type="text" name="celular_contacto"
+                        value="{{ old('celular_contacto', Auth::check() ? Auth::user()->phone : '') }}" placeholder="Celular/Telefono de contacto"/>
+                    <x-input-error :messages="$errors->get('celular_contacto')" class="mt-2 text-danger" />
                 </div>
                 <!-- Info Adicional -->
                 <div class="mt-4">
                     <x-input-label for="info_adicional" :value="__('Información adicional')" />
-                    <textarea id="info_adicional" class="block mt-1 w-full" type="text" name="info_adicional" rows="4" placeholder="Información adicional"></textarea>
-                    <x-input-error :messages="$errors->get('info_adicional')" class="mt-2" />
+                    <textarea id="info_adicional" class="block mt-1 w-full" type="text" name="info_adicional" rows="4" placeholder="Información adicional">{{ old('info_adicional') }}</textarea>
+                    <x-input-error :messages="$errors->get('info_adicional')" class="mt-2 text-danger" />
                 </div>
                 <div class="payment-info-container-section">
                     <x-primary-button class="ms-4">
@@ -105,6 +118,19 @@
 <footer>
     @include('partials.footer')
 </footer>
+
+<script>
+    document.getElementById('type').addEventListener('change', function () {
+        var montoContainer = document.getElementById('monto-container');
+        if (this.value === 'dinero') {
+            montoContainer.style.display = 'block';
+            document.getElementById('monto').setAttribute('required', 'required');
+        } else {
+            montoContainer.style.display = 'none';
+            document.getElementById('monto').removeAttribute('required');
+        }
+    });
+</script>
 
 </body>
 </html>

@@ -14,29 +14,51 @@
             </div>
             <div class="card-body">
 
-                    <div class="mb-3 row">
-                        <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $user->name }}
-                        </div>
+                <div class="mb-3 row">
+                    <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        {{ $user->name }}
                     </div>
+                </div>
 
-                    <div class="mb-3 row">
-                        <label for="email" class="col-md-4 col-form-label text-md-end text-start"><strong>Email:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $user->email }}
-                        </div>
+                <div class="mb-3 row">
+                    <label for="dni" class="col-md-4 col-form-label text-md-end text-start"><strong>DNI:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        {{ $user->dni }}
                     </div>
+                </div>
 
-                    <div class="mb-3 row">
-                        <label for="roles" class="col-md-4 col-form-label text-md-end text-start"><strong>Rol:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            @forelse ($user->getRoleNames() as $role)
-                                <span class="badge bg-primary">{{ $role }}</span>
-                            @empty
-                            @endforelse
-                        </div>
+                <div class="mb-3 row">
+                    <label for="phone" class="col-md-4 col-form-label text-md-end text-start"><strong>Teléfono:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        {{ $user->phone }}
                     </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="birthdate" class="col-md-4 col-form-label text-md-end text-start"><strong>Fecha de Nacimiento:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        {{ $user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('d/m/Y') : 'N/A' }}
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="email" class="col-md-4 col-form-label text-md-end text-start"><strong>Email:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        {{ $user->email }}
+                    </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <label for="roles" class="col-md-4 col-form-label text-md-end text-start"><strong>Rol:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        @forelse ($user->getRoleNames() as $role)
+                            <span class="badge bg-primary">{{ $role }}</span>
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
