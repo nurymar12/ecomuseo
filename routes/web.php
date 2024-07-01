@@ -114,7 +114,8 @@ Route::post('/tasks/export', [TaskController::class, 'export'])->name('tasks.exp
 /* Route::post('/tasks/{task}/decline', [TaskController::class, 'decline'])->name('tasks.decline'); */
 
 Route::get('/volunteers/manage', [VolunteerController::class, 'show'])->name('volunteers.show');
-
+Route::post('/volunteers/{volunteer}/approve', [VolunteerController::class, 'approve'])->name('volunteers.approve');
+Route::post('/volunteers/{volunteer}/decline', [VolunteerController::class, 'decline'])->name('volunteers.decline');
 /* Route::post('/volunteers/{volunteer}/approve', [VolunteerController::class, 'approve'])->name('volunteers.approve');
 Route::post('/volunteers/{volunteer}/decline', [VolunteerController::class, 'decline'])->name('volunteers.decline'); */
 

@@ -1,0 +1,28 @@
+
+#table {
+    width: 100%;
+    margin-bottom: 1rem;
+    /* color: #212529; */
+    border-color: black;
+}
+
+
+#table th,
+#table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border: 1px solid #dee2e6;
+    border-color: black;
+}
+
+/* Estilos para las filas de la tabla basados en el estado de la visita */
+.pending {
+    /* background: yellow; */
+    background-color: #eed78c; /* Amarillo */
+}
+.active {
+    background-color: #d4edda; /* Verde */
+}
+.inactive {
+    background-color: #f8d7da; /* Rojo */
+}

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Volunteer;
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class VolunteerController extends Controller
 {
@@ -22,8 +24,7 @@ class VolunteerController extends Controller
     public function show(): View
     {
         $volunteers = Volunteer::with(['user'])
-            ->where('status', '!=', 'inactive')
-            ->orderByRaw("FIELD(status, 'approved') DESC")
+            ->orderByRaw("FIELD(status, 'active', 'pending', 'inactive') ASC")
             ->orderBy('requested_date', 'desc')
             ->latest()
             ->paginate(10);
@@ -59,6 +60,32 @@ class VolunteerController extends Controller
         } else {
             return redirect()->route('volunteers.index')->with('error', 'Debe proporcionar un CV en PDF.');
         }
+    }
+
+    public function approve($id): RedirectResponse
+    {
+        $volunteer = Volunteer::findOrFail($id);
+        $volunteer->status = 'active';
+        $volunteer->approved_date = now();
+        $volunteer->save();
+
+        $user = $volunteer->user;
+        $user->assignRole('Volunteer');
+
+        return redirect()->route('volunteers.show')->with('success', 'Voluntario aprobado con éxito.');
+    }
+
+    public function decline($id): RedirectResponse
+    {
+        $volunteer = Volunteer::findOrFail($id);
+        $volunteer->status = 'inactive';
+        $volunteer->inactive_date = now();
+        $volunteer->save();
+
+        $user = $volunteer->user;
+        $user->removeRole('Volunteer');
+
+        return redirect()->route('volunteers.show')->with('success', 'Voluntario rechazado con éxito.');
     }
     /* public function approve($id): RedirectResponse
     {
