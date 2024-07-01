@@ -95,23 +95,12 @@ class VolunteerController extends Controller
 
         return redirect()->route('volunteers.show')->with('success', 'Voluntario rechazado con éxito.');
     }
-    /* public function approve($id): RedirectResponse
+
+    public function destroy($id): RedirectResponse
     {
         $volunteer = Volunteer::findOrFail($id);
-        $volunteer->update(['status' => 'approved', 'approved_date' => now()]);
-        return back()->with('success', 'Volunteer approved successfully.');
-    }
+        $volunteer->delete();
 
-    public function decline($id): RedirectResponse
-    {
-        $volunteer = Volunteer::findOrFail($id);
-        $volunteer->update(['status' => 'rejected']);
-        return back()->with('success', 'Volunteer rejected successfully.');
+        return redirect()->route('volunteers.show')->with('success', 'Solicitud de voluntariado eliminada con éxito.');
     }
-
-    public function destroy(Volunteer $volunteer): RedirectResponse
-    {
-        $volunteer->update(['status' => 'inactive', 'inactive_date' => now()]);
-        return back()->with('success', 'Volunteer inactive.');
-    } */
 }

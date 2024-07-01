@@ -43,8 +43,14 @@
                             <button type="button" class="btn btn-sm btn-danger bi-x-lg decline-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Rechazar"></button>
                         @endif
                         @if ($volunteer->status == 'inactive')
-                        <button type="button" class="btn btn-sm btn-success bi-check-lg approve-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Aprobar"></button>
+                            <button type="button" class="btn btn-sm btn-success bi-check-lg approve-btn" data-id="{{ $volunteer->id }}" data-toggle="tooltip" data-placement="top" title="Aprobar"></button>
                         @endif
+                        <!-- Botón de eliminación -->
+                        <form method="POST" action="{{ route('volunteers.destroy', $volunteer->id) }}" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger bi-trash" onclick="return confirm('¿Está seguro de que desea eliminar esta solicitud de voluntariado?');" data-toggle="tooltip" data-placement="top" title="Eliminar"></button>
+                        </form>
                     </td>
                 </tr>
                 @empty
