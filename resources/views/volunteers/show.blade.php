@@ -6,7 +6,10 @@
 <div class="card">
     <div class="card-header">Lista de Voluntarios</div>
     <div class="card-body">
-
+    @canany(['create-task', 'edit-task', 'delete-task'])
+        <a class="btn btn-warning btn-sm my-2" href="{{ route('tasks.index') }}">
+        <i class="bi bi-journal"></i> Asignar Tareas</a>
+    @endcanany
         <table id="table">
             <thead>
                 <tr>

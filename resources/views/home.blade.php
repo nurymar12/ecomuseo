@@ -105,10 +105,6 @@
                             <a class="btn btn-success btn-lg" href="{{ route('donations.show') }}">
                                 <i class="bi bi-coin"></i> Gestionar Donaciones</a>
                         @endcanany
-                        @canany(['create-task', 'edit-task', 'delete-task'])
-                            <a class="btn btn-warning btn-lg" href="{{ route('tasks.index') }}">
-                                <i class="bi bi-journal"></i> Gestionar Tareas</a>
-                        @endcanany
                         @canany(['create-volunteer', 'edit-volunteer', 'delete-volunteer'])
                             <a class="btn btn-danger btn-lg" href="{{ route('volunteers.show') }}">
                                 <i class="bi bi-wrench"></i> Voluntarios</a>
