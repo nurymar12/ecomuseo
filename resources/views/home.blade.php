@@ -84,10 +84,6 @@
                         @endforelse
                     @else
                         {{-- {{ __('You are logged in!') }} --}}
-                        @canany(['create-role', 'edit-role', 'delete-role'])
-                        <a class="btn btn-primary btn-lg" href="{{ route('roles.index') }}">
-                            <i class="bi bi-person-fill-gear"></i> Gestionar Roles</a>
-                        @endcanany
                         @canany(['create-user', 'edit-user', 'delete-user'])
                             <a class="btn btn-success btn-lg" href="{{ route('users.index') }}">
                                 <i class="bi bi-people"></i> Gestionar usuarios</a>
