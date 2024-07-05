@@ -96,10 +96,6 @@
                             <a class="btn btn-secondary btn-lg" href="{{ route('tours.index') }}">
                                 <i class="bi bi-bezier2"></i> Gestionar Tours</a>
                         @endcanany
-                        @canany(['edit-visit', 'delete-visit'])
-                            <a class="btn btn-info btn-lg" href="{{ route('visits.index') }}">
-                                <i class="bi bi-calendar-week"></i> Gestionar Visitas</a>
-                        @endcanany
                         <br/><br/>
                         @canany(['create-blog', 'edit-blog', 'delete-blog'])
                             <a class="btn btn-primary btn-lg" href="{{ route('blogs.index') }}">
