@@ -20,4 +20,9 @@ class Components extends Model
     {
         return $this->belongsToMany(Tour::class);
     }
+
+    public function donations()
+    {
+        return $this->belongsToMany(Donation::class, 'component_donation')->withPivot('amount');
+    }
 }
