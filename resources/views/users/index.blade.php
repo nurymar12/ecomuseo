@@ -8,6 +8,10 @@
         @can('create-user')
             <a href="{{ route('users.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Añadir Nuevo Usuario</a>
         @endcan
+        @can(['create-role', 'edit-role', 'delete-role'])
+            <a href="{{ route('roles.index') }}" class="btn btn-primary btn-sm my-2">
+            <i class="bi bi-person-fill-gear"></i> Gestionar Roles y Permisos</a>
+        @endcan
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>

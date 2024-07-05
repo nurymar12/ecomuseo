@@ -84,10 +84,6 @@
                         @endforelse
                     @else
                         {{-- {{ __('You are logged in!') }} --}}
-                        @canany(['create-role', 'edit-role', 'delete-role'])
-                        <a class="btn btn-primary btn-lg" href="{{ route('roles.index') }}">
-                            <i class="bi bi-person-fill-gear"></i> Gestionar Roles</a>
-                        @endcanany
                         @canany(['create-user', 'edit-user', 'delete-user'])
                             <a class="btn btn-success btn-lg" href="{{ route('users.index') }}">
                                 <i class="bi bi-people"></i> Gestionar usuarios</a>
@@ -100,10 +96,6 @@
                             <a class="btn btn-secondary btn-lg" href="{{ route('tours.index') }}">
                                 <i class="bi bi-bezier2"></i> Gestionar Tours</a>
                         @endcanany
-                        @canany(['edit-visit', 'delete-visit'])
-                            <a class="btn btn-info btn-lg" href="{{ route('visits.index') }}">
-                                <i class="bi bi-calendar-week"></i> Gestionar Visitas</a>
-                        @endcanany
                         <br/><br/>
                         @canany(['create-blog', 'edit-blog', 'delete-blog'])
                             <a class="btn btn-primary btn-lg" href="{{ route('blogs.index') }}">
@@ -112,10 +104,6 @@
                         @canany(['edit-donation', 'delete-donation'])
                             <a class="btn btn-success btn-lg" href="{{ route('donations.show') }}">
                                 <i class="bi bi-coin"></i> Gestionar Donaciones</a>
-                        @endcanany
-                        @canany(['create-task', 'edit-task', 'delete-task'])
-                            <a class="btn btn-warning btn-lg" href="{{ route('tasks.index') }}">
-                                <i class="bi bi-journal"></i> Gestionar Tareas</a>
                         @endcanany
                         @canany(['create-volunteer', 'edit-volunteer', 'delete-volunteer'])
                             <a class="btn btn-danger btn-lg" href="{{ route('volunteers.show') }}">

@@ -7,6 +7,10 @@
         @can('create-tour')
             <a href="{{ route('tours.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Añadir Nuevo Tour</a>
         @endcan
+        @canany(['edit-visit', 'delete-visit'])
+            <a class="btn btn-info btn-sm my-2" href="{{ route('visits.index') }}">
+                <i class="bi bi-calendar-week"></i> Solicitudes de Tour</a>
+        @endcanany
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
