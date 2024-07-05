@@ -242,7 +242,7 @@
 
         var ctx = document.getElementById('donationsChart').getContext('2d');
         var donationsChart = new Chart(ctx, {
-            type: 'doughnut',
+            type: 'bar',
             data: {
                 labels: {!! json_encode($componentLabels) !!},
                 datasets: [{
@@ -269,6 +269,11 @@
             },
             options: {
                 responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
                 plugins: {
                     legend: {
                         position: 'top',
